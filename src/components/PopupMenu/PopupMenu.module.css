@@ -1,0 +1,180 @@
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+  pointer-events: auto;
+}
+
+.popupMenu {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  min-width: 400px;
+  max-width: 500px;
+  overflow: hidden;
+  animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+}
+
+.popupHeader {
+  background: linear-gradient(135deg, #003366 0%, #004080 100%);
+  color: white;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.popupHeader h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.popupContent {
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.menuItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(0, 64, 128, 0.03) 100%);
+  border: 2px solid transparent;
+  opacity: 0;
+  animation: menuItemFade 0.5s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.menuItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 51, 102, 0.08) 0%, rgba(0, 64, 128, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 14px;
+}
+
+.menuItem:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(0, 51, 102, 0.2);
+  box-shadow: 0 12px 24px rgba(0, 51, 102, 0.15);
+}
+
+.menuItem:hover::before {
+  opacity: 1;
+}
+
+.menuItem:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.menuItemIcon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #003366 0%, #004080 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.menuItem:hover .menuItemIcon {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 51, 102, 0.3);
+}
+
+.menuItemText {
+  font-size: 16px;
+  font-weight: 600;
+  color: #003366;
+  letter-spacing: 0.3px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes menuItemFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

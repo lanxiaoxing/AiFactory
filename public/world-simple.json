@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "Brazil"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-74,-33.5],[-34,-33.5],[-34,5.5],[-74,5.5],[-74,-33.5]]]
+      }
+    },
+    {
+      "type": "Feature", 
+      "properties": {"name": "Indonesia"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[95,-11],[141,-11],[141,6],[95,6],[95,-11]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "India"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[68,6],[97,6],[97,37],[68,37],[68,6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "World"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-180,-85],[180,-85],[180,85],[-180,85],[-180,-85]]]
+      }
+    }
+  ]
+}

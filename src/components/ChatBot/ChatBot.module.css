@@ -1,0 +1,198 @@
+/* 聊天机器人样式 */
+.chatBot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.robotIcon {
+  width: 80px;
+  height: 80px;
+  background-color: var(--catl-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.robotIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 51, 102, 0.4);
+}
+
+.robotIcon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.chatWindow {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 320px;
+  height: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e1e5e9;
+}
+
+.chatHeader {
+  background-color: var(--catl-blue);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.closeBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatMessages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message {
+  max-width: 85%;
+  word-wrap: break-word;
+}
+
+.userMessage {
+  align-self: flex-end;
+}
+
+.userMessage .messageText {
+  background-color: var(--catl-blue);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 18px 18px 4px 18px;
+}
+
+.botMessage {
+  align-self: flex-start;
+}
+
+.botMessage .messageText {
+  background-color: #f1f3f5;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 18px 18px 18px 4px;
+}
+
+.messageText {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.messageTime {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
+
+.userMessage .messageTime {
+  text-align: right;
+}
+
+.botMessage .messageTime {
+  text-align: left;
+}
+
+.chatInput {
+  padding: 16px;
+  border-top: 1px solid #e1e5e9;
+  display: flex;
+  gap: 8px;
+  background-color: #fafbfc;
+}
+
+.inputField {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d9e0;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.inputField:focus {
+  border-color: var(--catl-blue);
+}
+
+.sendBtn {
+  padding: 10px 16px;
+  background-color: var(--catl-blue);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sendBtn:hover:not(:disabled) {
+  background-color: #002244;
+}
+
+.sendBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .chatWindow {
+    width: calc(100vw - 40px);
+    height: 60vh;
+    right: -10px;
+  }
+  
+  .robotIcon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .robotIcon img {
+    width: 50px;
+    height: 50px;
+  }
+}
