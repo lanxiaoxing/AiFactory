@@ -3,7 +3,6 @@ import styles from './Home.module.css';
 import PopupMenu from '../../components/PopupMenu';
 import FileManager from '../../components/FileManager';
 import ProcessManager from '../../components/FileManager/ProcessManager';
-import ChatBot from '../../components/ChatBot';
 
 const countryMarkers = [
   {
@@ -135,7 +134,6 @@ const Home: React.FC = () => {
         />
       )}
 
-      <ChatBot />
     </div>
   );
 };
