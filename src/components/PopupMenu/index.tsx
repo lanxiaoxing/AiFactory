@@ -38,7 +38,7 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
       color: '#4ECDC4'
     },
     {
-      title: 'Qualification',
+      title: 'Issue Management',
       icon: '🔒',
       color: '#45B7D1'
     },
