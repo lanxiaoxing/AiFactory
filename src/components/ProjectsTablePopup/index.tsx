@@ -54,16 +54,6 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
         </div>
         <div className={styles.tableContainer}>
           <table className={styles.projectsTable}>
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>One Page</th>
-                <th>Schedule</th>
-                <th>Key Features</th>
-                <th>Line Plan / Layout</th>
-                <th>Key Issue</th>
-              </tr>
-            </thead>
             <tbody>
               {projectData.map((project, rowIndex) => (
                 <tr key={rowIndex}>
