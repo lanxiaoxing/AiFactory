@@ -24,9 +24,6 @@ const Header: React.FC = () => {
       title: 'WPC Plannning'
     },
     {
-      title: 'Projects'
-    },
-    {
       title: 'Global Support'
     },
     {
@@ -61,7 +58,7 @@ const Header: React.FC = () => {
                 onMouseEnter={() => handleMouseEnter(item.title)}
                 onMouseLeave={handleMouseLeave}
               >
-                <span 
+                <span
                   className={styles.menuTitle}
                   onClick={item.title === 'Projects' ? handleProjectsClick : undefined}
                   style={item.title === 'Projects' ? { cursor: 'pointer' } : undefined}
