@@ -3,6 +3,7 @@ import styles from './Home.module.css';
 import PopupMenu from '../../components/PopupMenu';
 import FileManager from '../../components/FileManager';
 import ProcessManager from '../../components/FileManager/ProcessManager';
+import ProjectsTablePopup from '../../components/ProjectsTablePopup';
 
 const countryMarkers = [
   {
@@ -43,6 +44,7 @@ const Home: React.FC = () => {
   const [showPopupMenu, setShowPopupMenu] = useState(false);
   const [showFileManager, setShowFileManager] = useState(false);
   const [showProcessManager, setShowProcessManager] = useState(false);
+  const [showProjectsTable, setShowProjectsTable] = useState(false);
 
   const handleMarkerClick = (countryName: string) => {
     setSelectedCountry(countryName);
@@ -63,11 +65,14 @@ const Home: React.FC = () => {
     } else if (option === 'Process') {
       setShowPopupMenu(false);
       setShowProcessManager(true);
+    } else if (option === 'Projects') {
+      setShowPopupMenu(false);
+      setShowProjectsTable(true);
     } else if (option === 'Security') {
       setShowPopupMenu(false);
       // alert(`Security features for ${selectedCountry} will be implemented soon.`);
     }
-    // 其他菜单项的处理逻辑
+    // 其他菜单项的处理逻辑（Saudi Arabia的Projects Info不做任何处理）
   };
 
   const handleFileManagerClose = () => {
@@ -77,6 +82,11 @@ const Home: React.FC = () => {
 
   const handleProcessManagerClose = () => {
     setShowProcessManager(false);
+    setSelectedCountry(null);
+  };
+
+  const handleProjectsTableClose = () => {
+    setShowProjectsTable(false);
     setSelectedCountry(null);
   };
 
@@ -132,6 +142,10 @@ const Home: React.FC = () => {
           countryName={selectedCountry}
           onClose={handleProcessManagerClose}
         />
+      )}
+
+      {showProjectsTable && (
+        <ProjectsTablePopup onClose={handleProjectsTableClose} />
       )}
 
     </div>

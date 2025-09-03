@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
+import ProjectsTablePopup from '../ProjectsTablePopup';
 
 interface MenuItem {
   title: string;
@@ -7,6 +8,7 @@ interface MenuItem {
 
 const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [showProjectsTable, setShowProjectsTable] = useState(false);
 
   const menuItems: MenuItem[] = [
     {
@@ -20,6 +22,9 @@ const Header: React.FC = () => {
     },
     {
       title: 'WPC Plannning'
+    },
+    {
+      title: 'Projects'
     },
     {
       title: 'Global Support'
@@ -37,6 +42,10 @@ const Header: React.FC = () => {
     setActiveMenu(null);
   };
 
+  const handleProjectsClick = () => {
+    setShowProjectsTable(true);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -52,7 +61,13 @@ const Header: React.FC = () => {
                 onMouseEnter={() => handleMouseEnter(item.title)}
                 onMouseLeave={handleMouseLeave}
               >
-                <span className={styles.menuTitle}>{item.title}</span>
+                <span 
+                  className={styles.menuTitle}
+                  onClick={item.title === 'Projects' ? handleProjectsClick : undefined}
+                  style={item.title === 'Projects' ? { cursor: 'pointer' } : undefined}
+                >
+                  {item.title}
+                </span>
                 {activeMenu === item.title && (
                   <div className={styles.dropdown}>
                   </div>
@@ -62,6 +77,9 @@ const Header: React.FC = () => {
           </ul>
         </nav>
       </div>
+      {showProjectsTable && (
+        <ProjectsTablePopup onClose={() => setShowProjectsTable(false)} />
+      )}
     </header>
   );
 };
