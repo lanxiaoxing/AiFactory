@@ -41,6 +41,10 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
     }
   ];
 
+  const handleCellClick = (projectName: string, columnName: string) => {
+    // alert(`Clicked on ${projectName} - ${columnName}`);
+  };
+
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
       <div className={styles.popupTable} onClick={(e) => e.stopPropagation()}>
@@ -61,14 +65,39 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
               </tr>
             </thead>
             <tbody>
-              {projectData.map((project, index) => (
-                <tr key={index}>
+              {projectData.map((project, rowIndex) => (
+                <tr key={rowIndex}>
                   <td className={styles.projectName}>{project.project}</td>
-                  <td>{project.onePage}</td>
-                  <td>{project.schedule}</td>
-                  <td>{project.keyFeatures}</td>
-                  <td>{project.linePlan}</td>
-                  <td>{project.keyIssue}</td>
+                  <td
+                    className={styles.clickableCell}
+                    onClick={() => handleCellClick(project.project, 'One Page')}
+                  >
+                    {project.onePage}
+                  </td>
+                  <td
+                    className={styles.clickableCell}
+                    onClick={() => handleCellClick(project.project, 'Schedule')}
+                  >
+                    {project.schedule}
+                  </td>
+                  <td
+                    className={styles.clickableCell}
+                    onClick={() => handleCellClick(project.project, 'Key Features')}
+                  >
+                    {project.keyFeatures}
+                  </td>
+                  <td
+                    className={styles.clickableCell}
+                    onClick={() => handleCellClick(project.project, 'Line Plan / Layout')}
+                  >
+                    {project.linePlan}
+                  </td>
+                  <td
+                    className={styles.clickableCell}
+                    onClick={() => handleCellClick(project.project, 'Key Issue')}
+                  >
+                    {project.keyIssue}
+                  </td>
                 </tr>
               ))}
             </tbody>

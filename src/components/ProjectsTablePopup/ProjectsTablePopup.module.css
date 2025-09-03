@@ -102,6 +102,30 @@
   transition: background-color 0.2s ease;
 }
 
+.clickableCell {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.clickableCell:hover {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+  color: #1976d2;
+  font-weight: 500;
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+}
+
+.clickableCell:active {
+  background-color: #bbdefb;
+  transform: scale(0.98);
+}
+
+
 .projectName {
   font-weight: 600;
   color: #003366;
@@ -109,6 +133,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  cursor: default;
 }
 
 /* 滚动条样式 */
