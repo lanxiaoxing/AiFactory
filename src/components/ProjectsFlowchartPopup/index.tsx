@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProjectsFlowchartPopup.module.css';
 
 interface ProjectsFlowchartPopupProps {
@@ -6,7 +6,6 @@ interface ProjectsFlowchartPopupProps {
 }
 
 const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose }) => {
-  const [liquidGlassEffect, setLiquidGlassEffect] = useState<string | null>(null);
   const projectData = [
     {
       project: 'PROTO25',
@@ -32,16 +31,6 @@ const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose
 
   const handleItemClick = (projectName: string, item: string) => {
     console.log(`Clicked on ${projectName} - ${item}`);
-
-    // 检查是否为指定项目，如果是则触发液态玻璃效果
-    const targetProjects = ['PROTO25', 'LAGOS25', 'UTAH26', 'EQUATOR25'];
-    if (targetProjects.includes(projectName)) {
-      setLiquidGlassEffect(projectName);
-      // 6秒后清除效果
-      setTimeout(() => {
-        setLiquidGlassEffect(null);
-      }, 6000);
-    }
   };
 
   return (
@@ -56,7 +45,7 @@ const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose
           <div className={styles.flowchartRow}>
             {projectData.map((project, index) => (
               <div key={project.project} className={styles.projectFlow}>
-                <div className={`${styles.projectNode} ${liquidGlassEffect === project.project ? styles.liquidGlass : ''}`}>
+                <div className={styles.projectNode}>
                   <span className={styles.projectName}>{project.project}</span>
                   <div 
                     className={styles.projectIndicator}
