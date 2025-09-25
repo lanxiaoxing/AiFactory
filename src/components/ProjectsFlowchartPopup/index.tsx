@@ -10,22 +10,22 @@ const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose
     {
       project: 'PROTO25',
       items: ['Basic Information', 'Key Process', 'Manufacture Issue', 'Line Plan'],
-      color: '#FF6B35'
+      color: '#11a05dff'
     },
     {
       project: 'LAGOS25',
       items: ['Basic Information', 'Key Process', 'Manufacture Issue', 'Line Plan'],
-      color: '#4ECDC4'
+      color: '#11a05dff'
     },
     {
       project: 'UTAH26',
       items: ['Basic Information', 'Key Process', 'Manufacture Issue', 'Line Plan'],
-      color: '#45B7D1'
+      color: '#11a05dff'
     },
     {
       project: 'EQUATOR25',
       items: ['Basic Information', 'Key Process', 'Manufacture Issue', 'Line Plan'],
-      color: '#96CEB4'
+      color: '#FF6B35'
     }
   ];
 
