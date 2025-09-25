@@ -3,7 +3,7 @@ import styles from './Home.module.css';
 import PopupMenu from '../../components/PopupMenu';
 import FileManager from '../../components/FileManager';
 import ProcessManager from '../../components/FileManager/ProcessManager';
-import ProjectsTablePopup from '../../components/ProjectsTablePopup';
+import ProjectsFlowchartPopup from '../../components/ProjectsFlowchartPopup';
 
 const countryMarkers = [
   {
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
       )}
 
       {showProjectsTable && (
-        <ProjectsTablePopup onClose={handleProjectsTableClose} />
+        <ProjectsFlowchartPopup onClose={handleProjectsTableClose} />
       )}
 
     </div>
