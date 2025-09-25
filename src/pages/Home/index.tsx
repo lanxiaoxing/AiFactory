@@ -71,6 +71,10 @@ const Home: React.FC = () => {
     } else if (option === 'Security') {
       setShowPopupMenu(false);
       // alert(`Security features for ${selectedCountry} will be implemented soon.`);
+    } else if (option === 'More') {
+      setShowPopupMenu(false);
+      // 新模块功能待实现
+      console.log(`More for ${selectedCountry} - Coming Soon!`);
     }
     // 其他菜单项的处理逻辑（Saudi Arabia的Projects Info不做任何处理）
   };

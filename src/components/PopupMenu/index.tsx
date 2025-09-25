@@ -23,6 +23,11 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
       title: 'Files',
       icon: '📁',
       color: '#45B7D1'
+    },
+    {
+      title: 'More',
+      icon: '➕',
+      color: '#9C27B0'
     }
   ];
 
@@ -46,6 +51,11 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
       title: 'File Transfer ',
       icon: '📁',
       color: '#84a515ff'
+    },
+    {
+      title: 'More',
+      icon: '➕',
+      color: '#9C27B0'
     }
   ];
 
@@ -53,8 +63,8 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
 
   const handleOptionClick = (option: string) => {
     onSelect(option);
-    // Only close for non-Files and non-Process options
-    if (option !== 'Files' && option !== 'Process') {
+    // Only close for non-Files, non-Process, and non-More options
+    if (option !== 'Files' && option !== 'Process' && option !== 'More') {
       onClose();
     }
   };
