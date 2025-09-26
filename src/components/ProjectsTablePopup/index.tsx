@@ -9,35 +9,31 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
   const projectData = [
     {
       project: 'PROTO25',
-      onePage: 'Project One Page',
-      schedule: 'Schedule',
-      keyFeatures: 'Key Features',
-      linePlan: 'Line Plan / Layout',
-      keyIssue: 'Key Issue'
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
     },
     {
       project: 'LAGOS25',
-      onePage: 'Project One Page',
-      schedule: 'Schedule',
-      keyFeatures: 'Key Features',
-      linePlan: 'Line Plan / Layout',
-      keyIssue: 'Key Issue'
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
     },
     {
       project: 'UTAH26',
-      onePage: 'Project One Page',
-      schedule: 'Schedule',
-      keyFeatures: 'Key Features',
-      linePlan: 'Line Plan / Layout',
-      keyIssue: 'Key Issue'
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
     },
     {
       project: 'EQUATOR25',
-      onePage: 'Project One Page',
-      schedule: 'Schedule',
-      keyFeatures: 'Key Features',
-      linePlan: 'Line Plan / Layout',
-      keyIssue: 'Key Issue'
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
     }
   ];
 
@@ -65,33 +61,27 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'One Page')}
+                    onClick={() => handleCellClick(project.project, 'Basic Information')}
                   >
-                    {project.onePage}
+                    {project.basicInformation}
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Schedule')}
+                    onClick={() => handleCellClick(project.project, 'Key Process')}
                   >
-                    {project.schedule}
+                    {project.keyProcess}
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Key Features')}
+                    onClick={() => handleCellClick(project.project, 'Manufacture Issue')}
                   >
-                    {project.keyFeatures}
+                    {project.manufactureIssue}
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Line Plan / Layout')}
+                    onClick={() => handleCellClick(project.project, 'Line Plan')}
                   >
                     {project.linePlan}
-                  </td>
-                  <td
-                    className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Key Issue')}
-                  >
-                    {project.keyIssue}
                   </td>
                 </tr>
               ))}
