@@ -138,6 +138,53 @@
   cursor: default;
 }
 
+.projectNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusLight {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+  animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.9);
+  }
+}
+
+.yellowLight {
+  background-color: #FFC107 !important;
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.6);
+  animation: breatheYellow 2s ease-in-out infinite;
+}
+
+@keyframes breatheYellow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 6px rgba(255, 193, 7, 0.6);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.9);
+  }
+}
+
 /* 滚动条样式 */
 .tableContainer::-webkit-scrollbar {
   width: 6px;

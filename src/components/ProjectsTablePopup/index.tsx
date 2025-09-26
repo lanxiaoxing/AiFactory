@@ -57,7 +57,12 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
             <tbody>
               {projectData.map((project, rowIndex) => (
                 <tr key={rowIndex}>
-                  <td className={styles.projectName}>{project.project}</td>
+                  <td className={styles.projectName}>
+                    <div className={styles.projectNameContainer}>
+                      <div className={`${styles.statusLight} ${project.project === 'EQUATOR25' ? styles.yellowLight : ''}`}></div>
+                      {project.project}
+                    </div>
+                  </td>
                   <td
                     className={styles.clickableCell}
                     onClick={() => handleCellClick(project.project, 'One Page')}
