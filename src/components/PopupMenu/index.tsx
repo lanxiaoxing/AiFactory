@@ -26,8 +26,8 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
     },
     {
       title: 'More',
-      icon: '➕',
-      color: '#9C27B0'
+      icon: '⋮',
+      color: '#5E72E4'
     }
   ];
 
@@ -49,8 +49,8 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
     },
     {
       title: 'More',
-      icon: '➕',
-      color: '#9C27B0'
+      icon: '⋮',
+      color: '#5E72E4'
     }
   ];
 
