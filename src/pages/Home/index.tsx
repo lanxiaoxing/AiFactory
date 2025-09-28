@@ -4,6 +4,7 @@ import PopupMenu from '../../components/PopupMenu';
 import FileManager from '../../components/FileManager';
 import ProcessManager from '../../components/FileManager/ProcessManager';
 import ProjectsTablePopup from '../../components/ProjectsTablePopup';
+import MoreMenu from '../../components/MoreMenu';
 
 const countryMarkers = [
   {
@@ -45,6 +46,7 @@ const Home: React.FC = () => {
   const [showFileManager, setShowFileManager] = useState(false);
   const [showProcessManager, setShowProcessManager] = useState(false);
   const [showProjectsTable, setShowProjectsTable] = useState(false);
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
 
   const handleMarkerClick = (countryName: string) => {
     setSelectedCountry(countryName);
@@ -73,8 +75,7 @@ const Home: React.FC = () => {
       // alert(`Security features for ${selectedCountry} will be implemented soon.`);
     } else if (option === 'More') {
       setShowPopupMenu(false);
-      // 新模块功能待实现
-      console.log(`More for ${selectedCountry} - Coming Soon!`);
+      setShowMoreMenu(true);
     }
     // 其他菜单项的处理逻辑（Saudi Arabia的Projects Info不做任何处理）
   };
@@ -91,6 +92,26 @@ const Home: React.FC = () => {
 
   const handleProjectsTableClose = () => {
     setShowProjectsTable(false);
+    setSelectedCountry(null);
+  };
+
+  const handleMoreMenuClose = () => {
+    setShowMoreMenu(false);
+    setSelectedCountry(null);
+  };
+
+  const handleMoreMenuSelect = (option: string) => {
+    console.log(`More menu selected: ${option} for ${selectedCountry}`);
+    setShowMoreMenu(false);
+
+    if (option === 'Projects Info') {
+      setShowProjectsTable(true);
+    } else if (option === 'File Transfer') {
+      setShowFileManager(true);
+    } else if (option === 'Process') {
+      setShowProcessManager(true);
+    }
+
     setSelectedCountry(null);
   };
 
@@ -150,6 +171,14 @@ const Home: React.FC = () => {
 
       {showProjectsTable && (
         <ProjectsTablePopup onClose={handleProjectsTableClose} />
+      )}
+
+      {showMoreMenu && selectedCountry && (
+        <MoreMenu
+          countryName={selectedCountry}
+          onClose={handleMoreMenuClose}
+          onSelect={handleMoreMenuSelect}
+        />
       )}
 
     </div>

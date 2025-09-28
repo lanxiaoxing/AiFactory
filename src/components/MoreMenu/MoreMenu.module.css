@@ -1,0 +1,112 @@
+.moreMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.moreMenuContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  width: 420px;
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.moreMenuGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.moreMenuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  aspect-ratio: 1;
+}
+
+.moreMenuItem:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 51, 102, 0.2);
+}
+
+.moreMenuItem:active {
+  transform: translateY(0);
+  background: #dee2e6;
+}
+
+.moreMenuItemIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  background: rgba(0, 51, 102, 0.1);
+}
+
+.iconEmoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.moreMenuItemTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .moreMenuContainer {
+    width: 320px;
+    padding: 16px;
+  }
+
+  .moreMenuGrid {
+    gap: 12px;
+  }
+
+  .moreMenuItem {
+    padding: 16px 8px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .moreMenuItemIcon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+  }
+
+  .iconEmoji {
+    font-size: 16px;
+  }
+
+  .moreMenuItemTitle {
+    font-size: 11px;
+  }
+}
