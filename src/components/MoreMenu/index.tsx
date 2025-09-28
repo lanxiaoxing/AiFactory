@@ -11,7 +11,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
   const menuOptions = [
     {
       title: 'BMS',
-      icon: '🔋',
+      icon: '📋',
       color: '#FF6B35'
     },
     {
@@ -26,13 +26,13 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
     },
     {
       title: 'KD',
-      icon: '📋',
+      icon: '🚢',
       color: '#45B7D1'
     },
     {
       title: 'Fixtures',
-      icon: '🔧',
-      color: '#5E72E4'
+      icon: '🧰',
+      color: '#8898f6e2'
     },
     {
       title: 'Message',
@@ -55,7 +55,12 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
               className={styles.moreMenuItem}
               onClick={() => handleOptionClick(option.title)}
             >
-              <div className={styles.moreMenuItemIcon}>
+              <div
+                className={styles.moreMenuItemIcon}
+                style={{
+                  backgroundColor: option.color,
+                } as React.CSSProperties}
+              >
                 <span className={styles.iconEmoji}>{option.icon}</span>
               </div>
               <div className={styles.moreMenuItemTitle}>

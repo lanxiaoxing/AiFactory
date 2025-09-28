@@ -16,8 +16,8 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
-  width: 420px;
-  padding: 24px;
+  width: 480px;
+  padding: 32px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -25,8 +25,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 16px;
+  gap: 24px;
   width: 100%;
+  justify-items: center;
+  align-items: center;
 }
 
 .moreMenuItem {
@@ -34,79 +36,83 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px 16px;
+  padding: 20px 12px;
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 50%;
   width: 120px;
   height: 120px;
   aspect-ratio: 1;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
 }
 
 .moreMenuItem:hover {
-  background: #e9ecef;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 51, 102, 0.2);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.moreMenuItem:hover .moreMenuItemIcon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .moreMenuItem:active {
-  transform: translateY(0);
-  background: #dee2e6;
+  transform: translateY(0) scale(0.98);
 }
 
 .moreMenuItemIcon {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 8px;
-  background: rgba(0, 51, 102, 0.1);
+  transition: all 0.2s ease;
 }
 
 .iconEmoji {
-  font-size: 20px;
+  font-size: 28px;
   line-height: 1;
 }
 
 .moreMenuItemTitle {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 600;
   color: #333;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 /* 响应式设计 */
 @media (max-width: 480px) {
   .moreMenuContainer {
-    width: 320px;
-    padding: 16px;
+    width: 360px;
+    padding: 24px;
   }
 
   .moreMenuGrid {
-    gap: 12px;
+    gap: 16px;
   }
 
   .moreMenuItem {
     padding: 16px 8px;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
   }
 
   .moreMenuItemIcon {
     width: 32px;
     height: 32px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .iconEmoji {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .moreMenuItemTitle {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
