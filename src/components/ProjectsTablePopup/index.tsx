@@ -59,21 +59,8 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
       <div className={styles.popupTable} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.popupHeader}>
-          <h3>Local New Project Overview</h3>
-          <button className={styles.closeButton} onClick={onClose}>×</button>
-        </div>
         <div className={styles.tableContainer}>
           <table className={styles.projectsTable}>
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Basic Information</th>
-                <th>Key Process</th>
-                <th>Manufacture Issue</th>
-                <th>Line Plan</th>
-              </tr>
-            </thead>
             <tbody>
               {projectData.map((project, rowIndex) => (
                 <tr key={rowIndex}>

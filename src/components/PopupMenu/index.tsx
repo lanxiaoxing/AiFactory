@@ -58,10 +58,6 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
 
   const handleOptionClick = (option: string) => {
     onSelect(option);
-    // Only close for Files, Process, and Projects options
-    if (option === 'Files' || option === 'Process' || option === 'Projects') {
-      onClose();
-    }
   };
 
   return (
