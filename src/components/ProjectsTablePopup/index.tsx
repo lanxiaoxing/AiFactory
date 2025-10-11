@@ -60,17 +60,16 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
     <div className={styles.popupOverlay} onClick={onClose}>
       <div className={styles.popupTable} onClick={(e) => e.stopPropagation()}>
         <div className={styles.popupHeader}>
-          <h2 className={styles.popupTitle}>Ongoing Projects 4</h2>
+          <h2 className={styles.popupTitle}>
+            <strong>Ongoing Projects</strong>
+            <span className={styles.projectCount}>{projectData.length}</span>
+          </h2>
           <div className={styles.ecgContainer}>
             <svg className={styles.ecgLine} viewBox="0 0 200 40" preserveAspectRatio="none">
               <polyline
                 points="0,20 35,20 38,5 42,35 46,8 50,32 54,20 85,20 88,5 92,35 96,8 100,32 104,20 135,20 138,5 142,35 146,8 150,32 154,20 200,20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
               />
             </svg>
-            <div className={styles.ecgPulse}></div>
           </div>
           <button className={styles.closeButton} onClick={onClose}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
