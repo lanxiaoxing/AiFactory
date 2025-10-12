@@ -33,7 +33,7 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
 
   const saudiArabiaMenuOptions = [
     {
-      title: 'Projects Info',
+      title: 'Project Overview',
       icon: '📊',
       color: '#FF6B35'
     },
@@ -46,6 +46,11 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
       title: 'File Transfer ',
       icon: '📁',
       color: '#84a515ff'
+    },
+    {
+      title: 'E/F Tracking',
+      icon: '🔧',
+      color: '#F39C12'
     },
     {
       title: 'More',

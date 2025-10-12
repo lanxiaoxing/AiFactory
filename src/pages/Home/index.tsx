@@ -77,7 +77,7 @@ const Home: React.FC = () => {
       setShowPopupMenu(false);
       setShowMoreMenu(true);
     }
-    // 其他菜单项的处理逻辑（Saudi Arabia的Projects Info不做任何处理）
+    // 其他菜单项的处理逻辑（Saudi Arabia的Project Overview不做任何处理）
   };
 
   const handleFileManagerClose = () => {
@@ -104,7 +104,7 @@ const Home: React.FC = () => {
     console.log(`More menu selected: ${option} for ${selectedCountry}`);
     setShowMoreMenu(false);
 
-    if (option === 'Projects Info') {
+    if (option === 'Project Overview') {
       setShowProjectsTable(true);
     } else if (option === 'File Transfer') {
       setShowFileManager(true);

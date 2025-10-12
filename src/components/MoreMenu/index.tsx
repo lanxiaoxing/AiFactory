@@ -8,7 +8,7 @@ interface MoreMenuProps {
 }
 
 const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) => {
-  const menuOptions = [
+  const allMenuOptions = [
     {
       title: 'BMS',
       icon: '📋',
@@ -40,6 +40,13 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
       color: '#d145a7ff'
     }
   ];
+
+  // Filter menu options based on country
+  const menuOptions = countryName.includes('Saudi Arabia')
+    ? allMenuOptions.filter(option =>
+        !['Interaction', 'Fixtures', 'KD'].includes(option.title)
+      )
+    : allMenuOptions;
 
   const handleOptionClick = (option: string) => {
     onClose();
