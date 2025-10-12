@@ -68,11 +68,21 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
     setShowOptionsMenu(false);
   };
 
-  
+  const handlePopupTableClick = () => {
+    // Close options menu when clicking on the popup table area
+    if (showOptionsMenu) {
+      setShowOptionsMenu(false);
+    }
+  };
+
+
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
-      <div className={styles.popupTable} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.popupHeader}>
+      <div className={styles.popupTable} onClick={(e) => {
+        e.stopPropagation();
+        handlePopupTableClick();
+      }}>
+        <div className={styles.popupHeader} onClick={(e) => e.stopPropagation()}>
           <h2 className={styles.popupTitle}>
             <strong>Ongoing Projects</strong>
             <span className={styles.projectCount}>{projectData.length}</span>
@@ -105,6 +115,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                   <td
                     className={styles.clickableCell}
                     onClick={(e) => {
+                      e.stopPropagation();
                       const rect = e.currentTarget.getBoundingClientRect();
                       setMenuPosition({ x: rect.right + 10, y: rect.top });
                       handleCellClick(project.project, 'Basic Information');
@@ -115,6 +126,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                   <td
                     className={styles.clickableCell}
                     onClick={(e) => {
+                      e.stopPropagation();
                       const rect = e.currentTarget.getBoundingClientRect();
                       setMenuPosition({ x: rect.right + 10, y: rect.top });
                       handleCellClick(project.project, 'Key Process');
@@ -125,6 +137,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                   <td
                     className={styles.clickableCell}
                     onClick={(e) => {
+                      e.stopPropagation();
                       const rect = e.currentTarget.getBoundingClientRect();
                       setMenuPosition({ x: rect.right + 10, y: rect.top });
                       handleCellClick(project.project, 'Manufacture Issue');
@@ -135,6 +148,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                   <td
                     className={styles.clickableCell}
                     onClick={(e) => {
+                      e.stopPropagation();
                       const rect = e.currentTarget.getBoundingClientRect();
                       setMenuPosition({ x: rect.right + 10, y: rect.top });
                       handleCellClick(project.project, 'Line Plan');
@@ -155,6 +169,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
               left: `${menuPosition.x}px`,
               top: `${menuPosition.y}px`,
             }}
+            onClick={(e) => e.stopPropagation()}
           >
             {getOptionsForColumn(selectedColumn).map((option, index) => (
               <div
