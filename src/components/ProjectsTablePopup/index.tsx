@@ -6,9 +6,10 @@ interface ProjectsTablePopupProps {
 }
 
 const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
-  const [showLinePlanOptions, setShowLinePlanOptions] = useState(false);
-  const [linePlanPosition, setLinePlanPosition] = useState({ x: 0, y: 0 });
+  const [showOptionsMenu, setShowOptionsMenu] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState('');
+  const [selectedColumn, setSelectedColumn] = useState('');
 
   const projectData = [
     {
@@ -41,18 +42,30 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
     }
   ];
 
-  const handleCellClick = (projectName: string, columnName: string) => {
-    if (columnName === 'Line Plan') {
-      setSelectedProject(projectName);
-      setShowLinePlanOptions(true);
-    } else {
-      // alert(`Clicked on ${projectName} - ${columnName}`);
+  const getOptionsForColumn = (columnName: string) => {
+    switch (columnName) {
+      case 'Basic Information':
+        return ['Product Config', 'Team Member', 'Product Volume'];
+      case 'Key Process':
+        return ['SMT', 'BE', 'CFC'];
+      case 'Manufacture Issue':
+        return ['SMT Issue', 'BE Issue', 'CFC Issue'];
+      case 'Line Plan':
+        return ['Line Capacity', 'Line Layout'];
+      default:
+        return [];
     }
   };
 
-  const handleLinePlanOptionClick = (option: string) => {
-    alert(`${selectedProject} - ${option}`);
-    setShowLinePlanOptions(false);
+  const handleCellClick = (projectName: string, columnName: string) => {
+    setSelectedProject(projectName);
+    setSelectedColumn(columnName);
+    setShowOptionsMenu(true);
+  };
+
+  const handleOptionClick = (option: string) => {
+    alert(`${selectedProject} - ${selectedColumn}: ${option}`);
+    setShowOptionsMenu(false);
   };
 
   
@@ -91,19 +104,31 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Basic Information')}
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setMenuPosition({ x: rect.right + 10, y: rect.top });
+                      handleCellClick(project.project, 'Basic Information');
+                    }}
                   >
                     {project.basicInformation}
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Key Process')}
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setMenuPosition({ x: rect.right + 10, y: rect.top });
+                      handleCellClick(project.project, 'Key Process');
+                    }}
                   >
                     {project.keyProcess}
                   </td>
                   <td
                     className={styles.clickableCell}
-                    onClick={() => handleCellClick(project.project, 'Manufacture Issue')}
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setMenuPosition({ x: rect.right + 10, y: rect.top });
+                      handleCellClick(project.project, 'Manufacture Issue');
+                    }}
                   >
                     {project.manufactureIssue}
                   </td>
@@ -111,7 +136,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                     className={styles.clickableCell}
                     onClick={(e) => {
                       const rect = e.currentTarget.getBoundingClientRect();
-                      setLinePlanPosition({ x: rect.right + 10, y: rect.top });
+                      setMenuPosition({ x: rect.right + 10, y: rect.top });
                       handleCellClick(project.project, 'Line Plan');
                     }}
                   >
@@ -123,26 +148,23 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
           </table>
         </div>
 
-        {showLinePlanOptions && (
+        {showOptionsMenu && (
           <div
             className={styles.linePlanOptions}
             style={{
-              left: `${linePlanPosition.x}px`,
-              top: `${linePlanPosition.y}px`,
+              left: `${menuPosition.x}px`,
+              top: `${menuPosition.y}px`,
             }}
           >
-            <div
-              className={styles.linePlanOption}
-              onClick={() => handleLinePlanOptionClick('Line Capacity')}
-            >
-              Line Capacity
-            </div>
-            <div
-              className={styles.linePlanOption}
-              onClick={() => handleLinePlanOptionClick('Line Layout')}
-            >
-              Line Layout
-            </div>
+            {getOptionsForColumn(selectedColumn).map((option, index) => (
+              <div
+                key={index}
+                className={styles.linePlanOption}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </div>
+            ))}
           </div>
         )}
       </div>
