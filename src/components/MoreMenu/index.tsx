@@ -11,7 +11,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
   const allMenuOptions = [
     {
       title: 'BMS',
-      icon: '📋',
+      icon: '👥',
       color: '#FF6B35'
     },
     {
@@ -30,8 +30,8 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
       color: '#45B7D1'
     },
     {
-      title: 'Fixtures',
-      icon: '🧰',
+      title: 'History',
+      icon: '📜',
       color: '#8898f6e2'
     },
     {
@@ -44,7 +44,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
   // Filter menu options based on country
   const menuOptions = countryName.includes('Saudi Arabia')
     ? allMenuOptions.filter(option =>
-        !['Interaction', 'Fixtures', 'KD'].includes(option.title)
+        !['Interaction', 'History', 'KD'].includes(option.title)
       )
     : allMenuOptions;
 
