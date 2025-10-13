@@ -13,7 +13,7 @@ const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose
       color: '#11a05dff'
     },
     {
-      project: 'LAGOS25',
+      project: 'MUMBAI25',
       items: ['Basic Information', 'Key Process', 'Manufacture Issue', 'Line Plan'],
       color: '#11a05dff'
     },
@@ -40,19 +40,19 @@ const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose
           <h3>Local New Project Overview</h3>
           <button className={styles.closeButton} onClick={onClose}>×</button>
         </div>
-        
+
         <div className={styles.flowchartContainer}>
           <div className={styles.flowchartRow}>
             {projectData.map((project, index) => (
               <div key={project.project} className={styles.projectFlow}>
                 <div className={styles.projectNode}>
                   <span className={styles.projectName}>{project.project}</span>
-                  <div 
+                  <div
                     className={styles.projectIndicator}
                     style={{ '--indicator-color': project.color } as React.CSSProperties}
                   ></div>
                 </div>
-                
+
                 {project.items.length > 0 && (
                   <div className={styles.projectDetails}>
                     {project.items.map((item, itemIndex) => (
@@ -66,7 +66,7 @@ const ProjectsFlowchartPopup: React.FC<ProjectsFlowchartPopupProps> = ({ onClose
                     ))}
                   </div>
                 )}
-                
+
                 {index < projectData.length - 1 && (
                   <div className={styles.arrow}>→</div>
                 )}

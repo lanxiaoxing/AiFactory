@@ -43,11 +43,6 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
       color: '#4ECDC4'
     },
     {
-      title: 'E/F Tracking',
-      icon: '🔧',
-      color: '#F39C12'
-    },
-    {
       title: 'File Transfer ',
       icon: '📁',
       color: '#84a515ff'

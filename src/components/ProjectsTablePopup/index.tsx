@@ -20,7 +20,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
       linePlan: 'Line Plan'
     },
     {
-      project: 'LAGOS25',
+      project: 'MUMBAI25',
       basicInformation: 'Basic Information',
       keyProcess: 'Key Process',
       manufactureIssue: 'Manufacture Issue',

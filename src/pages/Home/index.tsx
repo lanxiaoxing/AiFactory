@@ -17,13 +17,15 @@ const countryMarkers = [
     name: 'India',
     nameEn: '',
     position: { x: 64, y: 54 },
-    color: '#4ECDC4'
+    color: '#4ECDC4',
+    showLock: true
   },
   {
     name: 'Indonesia',
     nameEn: '',
     position: { x: 76, y: 66 },
-    color: '#d145a7ff'
+    color: '#d145a7ff',
+    showLock: true
   },
   {
     name: 'Saudi Arabia‌',
@@ -134,7 +136,8 @@ const Home: React.FC = () => {
             >
               <div className={styles.markerRing}></div>
               <div className={styles.markerCore}></div>
-              <div className={styles.markerPulse}></div>
+              {/* Brazil (index 0) 和 Argentina (index 4) 不显示脉冲动画 */}
+              {(index !== 0 && index !== 4) && <div className={styles.markerPulse}></div>}
               <div className={styles.markerLabel}>
                 <div className={styles.labelName}>
                   {country.name}
