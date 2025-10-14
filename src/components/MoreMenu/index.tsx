@@ -7,7 +7,7 @@ interface MoreMenuProps {
   onSelect: (option: string) => void;
 }
 
-const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) => {
+const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose }) => {
   const allMenuOptions = [
     {
       title: 'BMS',
@@ -43,12 +43,12 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
 
   // Filter menu options based on country
   const menuOptions = countryName.includes('Saudi Arabia')
-    ? allMenuOptions.filter(option =>
-        !['Interaction', 'History', 'KD'].includes(option.title)
+    ? allMenuOptions.filter(item =>
+        !['Interaction', 'History', 'KD'].includes(item.title)
       )
     : allMenuOptions;
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (_option: string) => {
     onClose();
   };
 
@@ -56,7 +56,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose, onSelect }) =
     <div className={styles.moreMenuOverlay} onClick={onClose}>
       <div className={styles.moreMenuContainer} onClick={(e) => e.stopPropagation()}>
         <div className={styles.moreMenuGrid}>
-          {menuOptions.map((option, index) => (
+          {menuOptions.map((option) => (
             <div
               key={option.title}
               className={styles.moreMenuItem}
