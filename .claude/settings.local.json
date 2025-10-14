@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(pkill:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(cat:*)",
+      "Bash(chmod:*)"
     ],
     "deny": [],
     "ask": []
