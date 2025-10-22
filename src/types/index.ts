@@ -18,3 +18,11 @@ export interface Stat {
   number: string;
   label: string;
 }
+
+// Google Analytics 事件类型
+export interface AnalyticsEvent {
+  action: string;
+  category: string;
+  label?: string;
+  value?: number;
+}
