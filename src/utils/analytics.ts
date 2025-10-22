@@ -1,7 +1,8 @@
 /// <reference types="vite/client" />
 
-// Google Analytics 配置
+// Google Analytics 配置 (已禁用，等待域名配置)
 export const GA_TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID || '';
+export const GA_ENABLED = false; // 暂时禁用 GA
 
 // 类型声明
 declare global {
@@ -38,23 +39,24 @@ export const loadGAScript = (trackingId: string) => {
   document.head.appendChild(script);
 };
 
-// 初始化 Google Analytics
+// 初始化 Google Analytics (已禁用)
 export const initGA = () => {
-  if (typeof window !== 'undefined' && GA_TRACKING_ID && !window.gtag) {
+  // GA 已禁用，等待域名配置
+  if (GA_ENABLED && typeof window !== 'undefined' && GA_TRACKING_ID && !window.gtag) {
     loadGAScript(GA_TRACKING_ID);
   }
 };
 
-// 跟踪页面浏览
+// 跟踪页面浏览 (已禁用)
 export const pageview = (url: string) => {
-  if (typeof window !== 'undefined' && GA_TRACKING_ID && window.gtag) {
+  if (GA_ENABLED && typeof window !== 'undefined' && GA_TRACKING_ID && window.gtag) {
     window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
     });
   }
 };
 
-// 跟踪自定义事件
+// 跟踪自定义事件 (已禁用)
 export const event = ({
   action,
   category,
@@ -66,7 +68,7 @@ export const event = ({
   label?: string;
   value?: number;
 }) => {
-  if (typeof window !== 'undefined' && GA_TRACKING_ID && window.gtag) {
+  if (GA_ENABLED && typeof window !== 'undefined' && GA_TRACKING_ID && window.gtag) {
     window.gtag('event', action, {
       event_category: category,
       event_label: label,

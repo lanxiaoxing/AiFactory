@@ -4,7 +4,9 @@
       "Bash(pkill:*)",
       "Bash(npm run build:*)",
       "Bash(cat:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

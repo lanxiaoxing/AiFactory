@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import ProjectsTablePopup from '../ProjectsTablePopup';
 
@@ -9,6 +10,7 @@ interface MenuItem {
 const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [showProjectsTable, setShowProjectsTable] = useState(false);
+  const navigate = useNavigate();
 
   const menuItems: MenuItem[] = [
     {
@@ -28,6 +30,9 @@ const Header: React.FC = () => {
     },
     {
       title: 'Info Management'
+    },
+    {
+      title: '📊 统计分析'
     }
   ];
 
@@ -39,8 +44,12 @@ const Header: React.FC = () => {
     setActiveMenu(null);
   };
 
-  const handleProjectsClick = () => {
-    setShowProjectsTable(true);
+  const handleMenuClick = (title: string) => {
+    if (title === '📊 统计分析') {
+      navigate('/analytics');
+    } else if (title === 'Projects') {
+      setShowProjectsTable(true);
+    }
   };
 
   return (
@@ -60,8 +69,8 @@ const Header: React.FC = () => {
               >
                 <span
                   className={styles.menuTitle}
-                  onClick={item.title === 'Projects' ? handleProjectsClick : undefined}
-                  style={item.title === 'Projects' ? { cursor: 'pointer' } : undefined}
+                  onClick={() => handleMenuClick(item.title)}
+                  style={{ cursor: 'pointer' }}
                 >
                   {item.title}
                 </span>

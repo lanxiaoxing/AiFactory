@@ -1,52 +1,75 @@
 #!/bin/bash
 
-echo "开始构建生产版本..."
+echo "🚀 开始构建生产版本..."
 
-# 1. 检查环境变量文件
-if [ ! -f ".env" ] && [ ! -f ".env.local" ]; then
-    echo "警告: 未找到 .env 或 .env.local 文件"
-    echo "请配置 Google Analytics 测量 ID"
-    echo ""
-    echo "创建示例配置文件..."
-    cp .env.example .env.local
-    echo "请编辑 .env.local 文件，设置您的 VITE_GA_TRACKING_ID"
-    echo ""
-    read -p "是否继续构建？(y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
-fi
-
-# 2. 构建静态文件
+# 1. 构建静态文件
+echo "📦 构建前端应用..."
 npm run build
 
 if [ $? -ne 0 ]; then
-    echo "构建失败"
+    echo "❌ 构建失败"
     exit 1
 fi
 
-echo "构建成功，文件位于 dist/ 目录"
+echo "✅ 构建成功，文件位于 dist/ 目录"
 echo ""
 
-# 3. 显示构建信息
-if [ -f ".env.local" ]; then
-    echo "✅ 使用配置文件: .env.local"
-    GA_ID=$(grep "VITE_GA_TRACKING_ID" .env.local | cut -d'=' -f2)
-    if [ -n "$GA_ID" ] && [ "$GA_ID" != "G-XXXXXXXXXX" ]; then
-        echo "✅ Google Analytics 已配置: $GA_ID"
+# 2. 部署说明
+echo "🚀 部署说明："
+echo ""
+echo "1️⃣  **安装 nginx** (如果未安装):"
+echo "   sudo yum install nginx -y"
+echo ""
+echo "2️⃣  **配置 nginx**:"
+echo "   sudo cp nginx.conf /etc/nginx/conf.d/website.conf"
+echo ""
+echo "3️⃣  **部署前端文件**:"
+echo "   sudo cp -r dist/* /usr/share/nginx/html/"
+echo ""
+echo "4️⃣  **设置文件权限**:"
+echo "   sudo chown -R nginx:nginx /usr/share/nginx/html/"
+echo ""
+echo "5️⃣  **启动 nginx**:"
+echo "   sudo systemctl start nginx"
+echo ""
+echo "6️⃣  **设置开机自启**:"
+echo "   sudo systemctl enable nginx"
+echo ""
+echo "📊 **可选：启动统计分析服务器** (实时统计):"
+echo "   node analytics-server.js"
+echo ""
+echo "7️⃣  **验证部署**:"
+echo "   curl http://localhost"
+echo ""
+echo "📈 **访问统计分析页面**:"
+echo "   http://localhost/analytics"
+echo ""
+echo "🎉 部署完成！"
+
+# 3. 启动选项
+echo ""
+read -p "是否现在启动统计分析服务器？(Y/n): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo ""
+    echo "🚀 启动统计分析服务器..."
+    node analytics-server.js &
+    ANALYTICS_PID=$!
+    sleep 2
+
+    if kill -0 $ANALYTICS_PID 2>/dev/null; then
+        echo "✅ 统计分析服务器启动成功"
+        echo "📊 API 地址: http://localhost:3001/api/analytics"
+        echo "📈 统计页面: http://localhost:3000/analytics"
+        echo ""
+        echo "💡 提示：使用 Ctrl+C 停止服务器"
+        # 等待用户停止
+        wait $ANALYTICS_PID
     else
-        echo "⚠️  Google Analytics 未正确配置，请检查 .env.local 文件"
+        echo "❌ 统计分析服务器启动失败"
+        kill $ANALYTICS_PID 2>/dev/null
     fi
 fi
 
 echo ""
-echo "部署说明："
-echo "1. 安装 nginx: sudo yum install nginx -y"
-echo "2. 复制配置: sudo cp nginx.conf /etc/nginx/conf.d/website.conf"
-echo "3. 复制文件: sudo cp -r dist/* /usr/share/nginx/html/"
-echo "4. 设置权限: sudo chown -R nginx:nginx /usr/share/nginx/html/"
-echo "5. 启动服务: sudo systemctl start nginx"
-echo "6. 开机自启: sudo systemctl enable nginx"
-echo ""
-echo "🔍 验证部署: curl http://localhost"
+echo "✨ 部署脚本执行完成！"
