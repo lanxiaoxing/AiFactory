@@ -7,20 +7,23 @@ interface ProjectDetailsPopupProps {
 }
 
 const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, onClose }) => {
-  // Sample data for each module
-  const basicInformationData = [
-    { parameter: 'Product Name', value: 'EQUATOR25 Battery Cell', specification: 'High-energy density lithium-ion', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-    { parameter: 'Capacity', value: '3500 mAh', specification: 'Nominal capacity at 0.2C', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-    { parameter: 'Voltage', value: '3.7V', specification: 'Nominal voltage', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-    { parameter: 'Energy Density', value: '260 Wh/kg', specification: 'Gravimetric energy density', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-  ];
+  // Product Config info
+  const productConfigInfo = {
+    Development: 'XiaMen',
+    Series: 'Moto Edge',
+    Platform: 'QC7750',
+    'Water Proof': 'IP69',
+    Display: '6.7 inch POLED',
+    Battery: '4800mAh'
+  };
 
-  const keyProcessData = [
-    { process: 'SMT', station: 'Surface Mount Technology', status: 'Operational', efficiency: '98.5%', output: '12K units/day', parameter: '', value: '', specification: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-    { process: 'BE', station: 'Battery Electrode Formation', status: 'Optimization', efficiency: '96.2%', output: '8K units/day', parameter: '', value: '', specification: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-    { process: 'CFC', station: 'Cell Final Configuration', status: 'Under Upgrade', efficiency: '94.8%', output: '10K units/day', parameter: '', value: '', specification: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-    { process: 'Welding', station: 'Ultrasonic Welding', status: 'Operational', efficiency: '97.1%', output: '15K units/day', parameter: '', value: '', specification: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
-  ];
+  // Key Process info
+  const keyProcessInfo = {
+    'SMT Key Process': '3 Mixed Pannel Underfill',
+    'Test Key Process': 'FOD, LCDCAL, SOIS, SWB',
+    'Assy Key Process': '前擂支架点胶，前壳点胶',
+    'Package Key Process': 'UV 固化胶'
+  };
 
   const manufactureIssueData = [
     { category: 'SMT Issue', description: 'Component alignment drift', frequency: 'Medium', impact: '2-3% yield loss', resolution: 'Calibration scheduled', parameter: '', value: '', specification: '', process: '', station: '', status: '', efficiency: '', output: '', line: '', capacity: '', current: '', utilization: '' },
@@ -35,6 +38,29 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     { line: 'Line 3', capacity: '4500 units/day', current: '0 units', utilization: '0%', status: 'Maintenance', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
     { line: 'Line 4', capacity: '5500 units/day', current: '4800 units', utilization: '87%', status: 'Active', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
   ];
+
+  // Product Config Info Component
+  const ProductConfigInfo: React.FC<{ title: string; info: { [key: string]: string } }> = ({ title, info }) => {
+    return (
+      <div className={styles.moduleSection}>
+        <div className={styles.moduleWithSidebar}>
+          <div className={styles.moduleSidebar}>
+            <h3 className={styles.moduleTitle}>{title}</h3>
+          </div>
+          <div className={styles.infoWrapper}>
+            <div className={styles.infoGrid}>
+              {Object.entries(info).map(([key, value], index) => (
+                <div key={index} className={styles.infoItem}>
+                  <span className={styles.infoLabel}>{key}:</span>
+                  <span className={styles.infoValue}>{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   const ModuleTable: React.FC<{ title: string; data: any[]; headers: string[] }> = ({ title, data, headers }) => {
     // Map headers to object keys for proper data access
@@ -107,16 +133,14 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
 
         <div className={styles.content}>
           <div className={styles.modulesGrid}>
-            <ModuleTable
+            <ProductConfigInfo
               title="Product Config"
-              data={basicInformationData}
-              headers={['Parameter', 'Value', 'Specification']}
+              info={productConfigInfo}
             />
 
-            <ModuleTable
+            <ProductConfigInfo
               title="Key Process"
-              data={keyProcessData}
-              headers={['Process', 'Station', 'Status', 'Efficiency', 'Output']}
+              info={keyProcessInfo}
             />
 
             <ModuleTable
