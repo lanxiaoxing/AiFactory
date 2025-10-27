@@ -26,17 +26,25 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
   ];
 
   const manufactureIssueData = [
-    { category: 'SMT Issue', description: 'Component alignment drift', frequency: 'Medium', impact: '2-3% yield loss', resolution: 'Calibration scheduled', parameter: '', value: '', specification: '', process: '', station: '', status: '', efficiency: '', output: '', line: '', capacity: '', current: '', utilization: '' },
-    { category: 'BE Issue', description: 'Electrode coating uniformity', frequency: 'Low', impact: '1% quality variance', resolution: 'Process optimization', parameter: '', value: '', specification: '', process: '', station: '', status: '', efficiency: '', output: '', line: '', capacity: '', current: '', utilization: '' },
-    { category: 'CFC Issue', description: 'Sealing integrity problems', frequency: 'High', impact: '5% rework rate', resolution: 'Equipment upgrade', parameter: '', value: '', specification: '', process: '', station: '', status: '', efficiency: '', output: '', line: '', capacity: '', current: '', utilization: '' },
-    { category: 'Temperature', description: 'Thermal management inconsistency', frequency: 'Medium', impact: '3% performance variance', resolution: 'New cooling system', parameter: '', value: '', specification: '', process: '', station: '', status: '', efficiency: '', output: '', line: '', capacity: '', current: '', utilization: '' },
+    {
+      status: 'Open',
+      issueRiskStatus: 'CQA2 Motor vibration weak\nFR 0.07%（7/10000）',
+      rootCause: 'Motor FPC contact abnormal',
+      correctiveActions: '1. Short-term Solution: fixture improved\nAdd shims to the fixture and raise the stopper height to reduce the pressing depth.\n\n2. Long-term Solution: Process Improvement\nThe process will be modified as follows: first, assemble the coaxial cable to the USB board, then install this sub-assembly parts into the housing. (Original process: motor -> USB board -> coaxial cable).\n\nThe new fixtures arrived at 10/25. and validate ongoing. If the validation is successful, the solution will be shared with other manufacturing sites.'
+    },
+    {
+      status: 'Ongoing',
+      issueRiskStatus: 'B7-9 Battery Cover Step Difference Out of Spec\n(2nd Color) –Xinxiu\nFR 45.2%',
+      rootCause: 'Bottom arc height of Xinxiu battery cover is at lower spec limit (some out-of-spec).',
+      correctiveActions: '1. Supplier optimizing CNC process. Improved material under validation.'
+    },
   ];
 
   const linePlanData = [
-    { line: 'Line 1', capacity: '5000 units/day', current: '4500 units', utilization: '90%', status: 'Active', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
-    { line: 'Line 2', capacity: '6000 units/day', current: '5200 units', utilization: '87%', status: 'Active', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
-    { line: 'Line 3', capacity: '4500 units/day', current: '0 units', utilization: '0%', status: 'Maintenance', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
-    { line: 'Line 4', capacity: '5500 units/day', current: '4800 units', utilization: '87%', status: 'Active', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
+    { sites: 'WH', volume: '355 K', kd: 'PCBA + LDA', fg: '✓', smtLine: '2', beLine: '1', cfcLine: '1' },
+    { sites: 'India', volume: '500 K', kd: 'PCBA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+    { sites: 'BR', volume: '50 K', kd: 'PCBA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+    { sites: 'AR', volume: '45 K', kd: 'X', fg: '✓', smtLine: '/', beLine: '1', cfcLine: '1' },
   ];
 
   // Product Config Card Component - Card-based layout
@@ -87,7 +95,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     );
   };
 
-  const ModuleTable: React.FC<{ title: string; data: any[]; headers: string[] }> = ({ title, data, headers }) => {
+  const ModuleTable: React.FC<{ title: string; data: any[]; headers: string[]; noHover?: boolean; customClass?: string }> = ({ title, data, headers, noHover, customClass }) => {
     // Map headers to object keys for proper data access
     const headerToKeyMap: { [key: string]: string } = {
       'Parameter': 'parameter',
@@ -107,16 +115,31 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
       'Capacity': 'capacity',
       'Current': 'current',
       'Utilization': 'utilization',
+      'Issue': 'issue',
+      'SMT': 'smt',
+      'BE': 'be',
+      'CFC': 'cfc',
+      'Temperature': 'temperature',
+      'Issue, Risk and Status': 'issueRiskStatus',
+      'Root Cause': 'rootCause',
+      'Corrective Actions / Plan': 'correctiveActions',
+      'Sites': 'sites',
+      'Volume': 'volume',
+      'KD': 'kd',
+      'FG': 'fg',
+      'SMT Line': 'smtLine',
+      'BE Line': 'beLine',
+      'CFC Line': 'cfcLine',
     };
 
     return (
-      <div className={styles.moduleSection}>
+      <div className={`${styles.moduleSection} ${noHover ? styles.noHover : ''}`}>
         <div className={styles.moduleWithSidebar}>
           <div className={styles.moduleSidebar}>
             <h3 className={styles.moduleTitle}>{title}</h3>
           </div>
           <div className={styles.tableWrapper}>
-            <table className={styles.moduleTable}>
+            <table className={`${styles.moduleTable} ${noHover ? styles.noHoverTable : ''} ${customClass || ''}`}>
               <thead>
                 <tr>
                   {headers.map((header, index) => (
@@ -126,10 +149,15 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
               </thead>
               <tbody>
                 {data.map((row, rowIndex) => (
-                  <tr key={rowIndex}>
+                  <tr key={rowIndex} className={noHover ? styles.noHoverRow : ''}>
                     {headers.map((header, colIndex) => {
                       const key = headerToKeyMap[header];
-                      return <td key={colIndex}>{row[key]}</td>;
+                      const value = row[key];
+                      return (
+                        <td key={colIndex}>
+                          {value || (key === 'issue' ? '' : '')}
+                        </td>
+                      );
                     })}
                   </tr>
                 ))}
@@ -171,13 +199,15 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
             <ModuleTable
               title="Manufacture Issue"
               data={manufactureIssueData}
-              headers={['Category', 'Description', 'Frequency', 'Impact', 'Resolution']}
+              headers={['Status', 'Issue, Risk and Status', 'Root Cause', 'Corrective Actions / Plan']}
+              noHover={true}
             />
 
             <ModuleTable
               title="Line Plan"
               data={linePlanData}
-              headers={['Line', 'Capacity', 'Current', 'Utilization', 'Status']}
+              headers={['Sites', 'Volume', 'KD', 'FG', 'SMT Line', 'BE Line', 'CFC Line']}
+              customClass={styles.linePlanTable}
             />
           </div>
         </div>

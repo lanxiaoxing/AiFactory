@@ -392,12 +392,12 @@
 
 
 .moduleTable th {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #003366 0%, #004080 100%);
   padding: 12px 16px;
   text-align: left;
   font-weight: 600;
-  color: #2c3e50;
-  border-bottom: 2px solid #dee2e6;
+  color: white;
+  border-bottom: 2px solid #002244;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -407,12 +407,45 @@
 }
 
 .moduleTable td {
-  padding: 10px 16px;
-  border-bottom: 1px solid #f1f3f4;
-  color: #495057;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e9ecef;
+  color: #212529;
   vertical-align: top;
-  line-height: 1.4;
-  font-size: 12px;
+  line-height: 1.6;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Special styling for Manufacture Issue table */
+.moduleTable td:first-child {
+  font-weight: 600;
+  color: #495057;
+  text-align: center;
+  font-size: 13px;
+  width: 8%;
+  white-space: normal;
+}
+
+/* Issue, Risk and Status column */
+.moduleTable td:nth-child(2) {
+  font-weight: 500;
+  color: #212529;
+  width: 25%;
+}
+
+/* Root Cause column */
+.moduleTable td:nth-child(3) {
+  font-weight: 400;
+  color: #495057;
+  width: 25%;
+}
+
+/* Corrective Actions / Plan column */
+.moduleTable td:nth-child(4) {
+  font-weight: 400;
+  color: #212529;
+  width: 42%;
 }
 
 .moduleTable tr:hover {
@@ -429,35 +462,76 @@
   transform: scale(1.005);
 }
 
-/* Status-specific styling */
-.moduleTable td:contains('Operational') {
-  color: #28a745;
-  font-weight: 500;
+/* Remove hover effects for specific tables */
+.noHover:hover {
+  transform: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
-.moduleTable td:contains('Optimization') {
-  color: #ffc107;
-  font-weight: 500;
+.noHoverTable tr:hover {
+  background-color: transparent;
+  transition: none;
 }
 
-.moduleTable td:contains('Under Upgrade') {
-  color: #fd7e14;
-  font-weight: 500;
+.noHoverTable tr:nth-child(even) {
+  background-color: #fafbfc;
 }
 
-.moduleTable td:contains('Active') {
-  color: #28a745;
-  font-weight: 500;
+.noHoverTable tr:nth-child(even):hover {
+  background-color: #fafbfc;
+  transform: none;
 }
 
-.moduleTable td:contains('Maintenance') {
-  color: #6c757d;
-  font-weight: 500;
+.noHoverRow:hover {
+  background-color: transparent !important;
+}
+
+.noHoverTable tr:nth-child(even).noHoverRow:hover {
+  background-color: #fafbfc !important;
+  transform: none !important;
 }
 
 /* Custom scrollbar for content area */
 .content::-webkit-scrollbar {
   width: 8px;
+}
+
+/* Line Plan table specific styling */
+.linePlanTable {
+  border-collapse: collapse;
+}
+
+.linePlanTable th {
+  background: linear-gradient(135deg, #003366 0%, #004080 100%);
+  color: white;
+  border-bottom: 2px solid #002244;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+.linePlanTable td {
+  border-bottom: 1px solid #e9ecef;
+  padding: 12px 16px;
+  text-align: center;
+  color: #212529;
+  font-size: 13px;
+  background: white;
+  vertical-align: middle;
+}
+
+.linePlanTable tr:nth-child(even) td {
+  background: #fafbfc;
+}
+
+.linePlanTable tr:hover td {
+  background-color: #f8f9fa;
+}
+
+.linePlanTable tr:nth-child(even):hover td {
+  background-color: #f1f3f4;
 }
 
 .content::-webkit-scrollbar-track {
