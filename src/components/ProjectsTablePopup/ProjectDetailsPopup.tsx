@@ -19,7 +19,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
 
   // Key Process info - 2-column table layout
   const keyProcessData = [
-    { label: 'SMT Key Process', value: '3 Mixed Pannel Underfill' },
+    { label: 'SMT Key Process', value: '3 Mixed Pannel, Underfill' },
     { label: 'Test Key Process', value: 'FOD, LCDCAL, SOIS, SWB' },
     { label: 'Assy Key Process', value: 'Front Camera Bracket LDA，MIC LDA， Housing LDA，Inlay LDA' },
     { label: 'Package Key Process', value: 'UV Curing and Protective Film' }
@@ -50,7 +50,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
   // Product Config Card Component - Card-based layout
   const ProductConfigTable: React.FC<{ title: string; data: any[] }> = ({ title, data }) => {
     return (
-      <div className={styles.moduleSection}>
+      <div className={`${styles.moduleSection} ${styles.productConfigModule}`}>
         <div className={styles.moduleWithSidebar}>
           <div className={styles.moduleSidebar}>
             <h3 className={styles.moduleTitle}>{title}</h3>
