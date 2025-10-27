@@ -17,13 +17,13 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     { label: 'Battery', value: '4800mAh' }
   ];
 
-  // Key Process info
-  const keyProcessInfo = {
-    'SMT Key Process': '3 Mixed Pannel Underfill',
-    'Test Key Process': 'FOD, LCDCAL, SOIS, SWB',
-    'Assy Key Process': '前擂支架点胶，前壳点胶',
-    'Package Key Process': 'UV 固化胶'
-  };
+  // Key Process info - 2-column table layout
+  const keyProcessData = [
+    { label: 'SMT Key Process', value: '3 Mixed Pannel Underfill' },
+    { label: 'Test Key Process', value: 'FOD, LCDCAL, SOIS, SWB' },
+    { label: 'Assy Key Process', value: 'Front Camera Bracket LDA，MIC LDA， Housing LDA，Inlay LDA' },
+    { label: 'Package Key Process', value: 'UV Curing and Protective Film' }
+  ];
 
   const manufactureIssueData = [
     { category: 'SMT Issue', description: 'Component alignment drift', frequency: 'Medium', impact: '2-3% yield loss', resolution: 'Calibration scheduled', parameter: '', value: '', specification: '', process: '', station: '', status: '', efficiency: '', output: '', line: '', capacity: '', current: '', utilization: '' },
@@ -62,23 +62,25 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     );
   };
 
-  // Product Config Info Component
-  const ProductConfigInfo: React.FC<{ title: string; info: { [key: string]: string } }> = ({ title, info }) => {
+  // Key Process Table Component - 2-column table layout
+  const ProductConfigInfo: React.FC<{ title: string; data: any[] }> = ({ title, data }) => {
     return (
-      <div className={styles.moduleSection}>
+      <div className={`${styles.moduleSection} ${styles.keyProcessModule}`}>
         <div className={styles.moduleWithSidebar}>
           <div className={styles.moduleSidebar}>
             <h3 className={styles.moduleTitle}>{title}</h3>
           </div>
-          <div className={styles.infoWrapper}>
-            <div className={styles.infoGrid}>
-              {Object.entries(info).map(([key, value], index) => (
-                <div key={index} className={styles.infoItem}>
-                  <span className={styles.infoLabel}>{key}:</span>
-                  <span className={styles.infoValue}>{value}</span>
-                </div>
-              ))}
-            </div>
+          <div className={styles.tableWrapper}>
+            <table className={styles.keyProcessTable}>
+              <tbody>
+                {data.map((row, rowIndex) => (
+                  <tr key={rowIndex}>
+                    <td className={styles.configLabel}>{row.label}</td>
+                    <td className={styles.configValue}>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -163,7 +165,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
 
             <ProductConfigInfo
               title="Key Process"
-              info={keyProcessInfo}
+              data={keyProcessData}
             />
 
             <ModuleTable

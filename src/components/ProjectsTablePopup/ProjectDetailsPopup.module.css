@@ -215,6 +215,112 @@
   background: white;
 }
 
+.keyProcessTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  background: white;
+}
+
+.keyProcessTable tbody tr {
+  transition: none;
+}
+
+.keyProcessTable tbody tr:hover {
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.keyProcessTable tbody tr:hover .configLabel,
+.keyProcessTable tbody tr:hover .configValue {
+  background: inherit;
+  transform: none;
+}
+
+/* Adjust Key Process module height for coordination */
+.keyProcessModule .moduleWithSidebar {
+  min-height: 220px;
+}
+
+.keyProcessModule .tableWrapper {
+  flex: 1;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyProcessTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.keyProcessTable .configLabel {
+  width: 38%;
+  padding: 16px 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #dee2e6;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.keyProcessTable .configValue {
+  width: 62%;
+  padding: 16px 28px;
+  color: #212529;
+  font-weight: 500;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  background: white;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.keyProcessTable tbody tr:last-child .configLabel,
+.keyProcessTable tbody tr:last-child .configValue {
+  border-bottom: none;
+}
+
+.keyProcessTable tbody tr:last-child .configLabel {
+  border-bottom-left-radius: 8px;
+}
+
+.keyProcessTable tbody tr:last-child .configValue {
+  border-bottom-right-radius: 8px;
+}
+
+/* Responsive styles for Key Process module */
+@media (max-width: 768px) {
+  .keyProcessModule .tableWrapper {
+    padding: 16px 20px;
+  }
+
+  .keyProcessTable .configLabel {
+    padding: 12px 16px;
+    font-size: 11px;
+    width: 40%;
+  }
+
+  .keyProcessTable .configValue {
+    padding: 12px 18px;
+    font-size: 13px;
+    width: 60%;
+  }
+}
+
 
 .configLabel {
   padding: 20px 24px;
