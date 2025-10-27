@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './ProjectDetailsPopup.module.css';
 
 interface ProjectDetailsPopupProps {
+  projectName: string;
   onClose: () => void;
 }
 
-const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ onClose }) => {
+const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, onClose }) => {
   // Sample data for each module
   const basicInformationData = [
-    { parameter: 'Product Name', value: 'PROTO25 Battery Cell', specification: 'High-energy density lithium-ion', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
+    { parameter: 'Product Name', value: 'EQUATOR25 Battery Cell', specification: 'High-energy density lithium-ion', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
     { parameter: 'Capacity', value: '3500 mAh', specification: 'Nominal capacity at 0.2C', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
     { parameter: 'Voltage', value: '3.7V', specification: 'Nominal voltage', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
     { parameter: 'Energy Density', value: '260 Wh/kg', specification: 'Gravimetric energy density', process: '', station: '', status: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '', line: '', capacity: '', current: '', utilization: '' },
@@ -94,7 +95,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ onClose }) =>
       <div className={styles.popupContainer} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <h2 className={styles.title}>
-            <strong>PROTO25</strong> - Project Details
+            <strong>{projectName}</strong> - Project Details
           </h2>
           <button className={styles.closeButton} onClick={onClose}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -107,7 +108,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ onClose }) =>
         <div className={styles.content}>
           <div className={styles.modulesGrid}>
             <ModuleTable
-              title="Basic Information"
+              title="Product Config"
               data={basicInformationData}
               headers={['Parameter', 'Value', 'Specification']}
             />

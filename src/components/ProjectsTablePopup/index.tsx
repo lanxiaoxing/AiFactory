@@ -15,14 +15,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
 
   const projectData = [
     {
-      project: 'PROTO25',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
-      project: 'MUMBAI25',
+      project: 'EQUATOR25',
       basicInformation: 'Basic Information',
       keyProcess: 'Key Process',
       manufactureIssue: 'Manufacture Issue',
@@ -36,7 +29,14 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
       linePlan: 'Line Plan'
     },
     {
-      project: 'EQUATOR25',
+      project: 'MUMBAI25',
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
+    },
+    {
+      project: 'URUS25',
       basicInformation: 'Basic Information',
       keyProcess: 'Key Process',
       manufactureIssue: 'Manufacture Issue',
@@ -78,9 +78,8 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
   };
 
   const handleProjectNameClick = (projectName: string) => {
-    if (projectName === 'PROTO25') {
-      setShowProjectDetails(true);
-    }
+    setSelectedProject(projectName);
+    setShowProjectDetails(true);
   };
 
 
@@ -115,16 +114,16 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
               {projectData.map((project, rowIndex) => (
                 <tr key={rowIndex}>
                   <td
-                    className={`${styles.projectName} ${project.project === 'PROTO25' ? styles.clickableProjectName : ''}`}
+                    className={`${styles.projectName} ${styles.clickableProjectName}`}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleProjectNameClick(project.project);
                     }}
                   >
                     <div className={styles.projectNameContainer}>
-                      <div className={`${styles.statusLight} ${project.project === 'EQUATOR25' ? styles.yellowLight : ''}`}></div>
+                      <div className={`${styles.statusLight} ${project.project === 'URUS25' ? styles.yellowLight : ''}`}></div>
                       {project.project}
-                      {project.project === 'PROTO25' && <span className={styles.clickIndicator}>📊</span>}
+                      <span className={styles.clickIndicator}>📊</span>
                     </div>
                   </td>
                   <td
@@ -200,6 +199,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
 
         {showProjectDetails && (
           <ProjectDetailsPopup
+            projectName={selectedProject}
             onClose={() => setShowProjectDetails(false)}
           />
         )}
