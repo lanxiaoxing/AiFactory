@@ -207,6 +207,84 @@
   background: white;
 }
 
+.productConfigTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  background: white;
+}
+
+
+.configLabel {
+  padding: 20px 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #f1f3f5 0%, #e9ecef 100%);
+  border-bottom: 2px solid #dee2e6;
+  width: 25%;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* Card-based styles for Product Config */
+.configCardsWrapper {
+  padding: 24px;
+  flex: 1;
+}
+
+.configCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.configCard {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100px;
+}
+
+.configCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #dee2e6;
+}
+
+.configCardLabel {
+  font-weight: 700;
+  color: #6c757d;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.configCardValue {
+  color: #212529;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.productConfigTable tbody tr:last-child .configLabel,
+.productConfigTable tbody tr:last-child .configValue {
+  border-bottom: none;
+}
+
+
 .moduleTable th {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   padding: 12px 16px;
@@ -372,6 +450,59 @@
   .moduleTable th,
   .moduleTable td {
     padding: 8px 10px;
+  }
+
+  .productConfigTable {
+    font-size: 12px;
+  }
+
+  .configLabel {
+    padding: 12px 14px;
+    font-size: 11px;
+    width: 25%;
+  }
+
+  .configValue {
+    padding: 12px 16px;
+    font-size: 13px;
+    width: 25%;
+  }
+
+  /* Responsive styles for card layout */
+  .configCardsWrapper {
+    padding: 16px;
+  }
+
+  .configCardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .configCard {
+    padding: 16px;
+    min-height: 80px;
+  }
+
+  .configCardLabel {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .configCardValue {
+    font-size: 14px;
+  }
+
+  /* Extra small screens (mobile) */
+  @media (max-width: 480px) {
+    .configCardsGrid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .configCard {
+      padding: 14px;
+      min-height: 70px;
+    }
   }
 
   .infoWrapper {

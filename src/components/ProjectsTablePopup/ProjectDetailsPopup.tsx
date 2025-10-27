@@ -7,15 +7,15 @@ interface ProjectDetailsPopupProps {
 }
 
 const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, onClose }) => {
-  // Product Config info
-  const productConfigInfo = {
-    Development: 'XiaMen',
-    Series: 'Moto Edge',
-    Platform: 'QC7750',
-    'Water Proof': 'IP69',
-    Display: '6.7 inch POLED',
-    Battery: '4800mAh'
-  };
+  // Product Config data - 3x2 table layout
+  const productConfigData = [
+    { label: 'Development', value: 'XiaMen' },
+    { label: 'Platform', value: 'QC7750' },
+    { label: 'Display', value: '6.7 inch POLED' },
+    { label: 'Series', value: 'Moto Edge' },
+    { label: 'Water Proof', value: 'IP69' },
+    { label: 'Battery', value: '4800mAh' }
+  ];
 
   // Key Process info
   const keyProcessInfo = {
@@ -38,6 +38,29 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     { line: 'Line 3', capacity: '4500 units/day', current: '0 units', utilization: '0%', status: 'Maintenance', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
     { line: 'Line 4', capacity: '5500 units/day', current: '4800 units', utilization: '87%', status: 'Active', parameter: '', value: '', specification: '', process: '', station: '', efficiency: '', output: '', category: '', description: '', frequency: '', impact: '', resolution: '' },
   ];
+
+  // Product Config Card Component - Card-based layout
+  const ProductConfigTable: React.FC<{ title: string; data: any[] }> = ({ title, data }) => {
+    return (
+      <div className={styles.moduleSection}>
+        <div className={styles.moduleWithSidebar}>
+          <div className={styles.moduleSidebar}>
+            <h3 className={styles.moduleTitle}>{title}</h3>
+          </div>
+          <div className={styles.configCardsWrapper}>
+            <div className={styles.configCardsGrid}>
+              {data.map((item, index) => (
+                <div key={index} className={styles.configCard}>
+                  <div className={styles.configCardLabel}>{item.label}</div>
+                  <div className={styles.configCardValue}>{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   // Product Config Info Component
   const ProductConfigInfo: React.FC<{ title: string; info: { [key: string]: string } }> = ({ title, info }) => {
@@ -133,9 +156,9 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
 
         <div className={styles.content}>
           <div className={styles.modulesGrid}>
-            <ProductConfigInfo
+            <ProductConfigTable
               title="Product Config"
-              info={productConfigInfo}
+              data={productConfigData}
             />
 
             <ProductConfigInfo
