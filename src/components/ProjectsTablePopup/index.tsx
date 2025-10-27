@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ProjectsTablePopup.module.css';
+import ProjectDetailsPopup from './ProjectDetailsPopup';
 
 interface ProjectsTablePopupProps {
   onClose: () => void;
@@ -10,6 +11,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState('');
   const [selectedColumn, setSelectedColumn] = useState('');
+  const [showProjectDetails, setShowProjectDetails] = useState(false);
 
   const projectData = [
     {
@@ -75,6 +77,12 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
     }
   };
 
+  const handleProjectNameClick = (projectName: string) => {
+    if (projectName === 'PROTO25') {
+      setShowProjectDetails(true);
+    }
+  };
+
 
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
@@ -106,10 +114,17 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
             <tbody>
               {projectData.map((project, rowIndex) => (
                 <tr key={rowIndex}>
-                  <td className={styles.projectName}>
+                  <td
+                    className={`${styles.projectName} ${project.project === 'PROTO25' ? styles.clickableProjectName : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleProjectNameClick(project.project);
+                    }}
+                  >
                     <div className={styles.projectNameContainer}>
                       <div className={`${styles.statusLight} ${project.project === 'EQUATOR25' ? styles.yellowLight : ''}`}></div>
                       {project.project}
+                      {project.project === 'PROTO25' && <span className={styles.clickIndicator}>📊</span>}
                     </div>
                   </td>
                   <td
@@ -181,6 +196,12 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
               </div>
             ))}
           </div>
+        )}
+
+        {showProjectDetails && (
+          <ProjectDetailsPopup
+            onClose={() => setShowProjectDetails(false)}
+          />
         )}
       </div>
     </div>
