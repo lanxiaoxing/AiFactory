@@ -27,13 +27,13 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
 
   const manufactureIssueData = [
     {
-      status: 'Open',
+      status: 'Issue 1',
       issueRiskStatus: 'CQA2 Motor vibration weak\nFR 0.07%（7/10000）',
       rootCause: 'Motor FPC contact abnormal',
       correctiveActions: '1. Short-term Solution: fixture improved\nAdd shims to the fixture and raise the stopper height to reduce the pressing depth.\n\n2. Long-term Solution: Process Improvement\nThe process will be modified as follows: first, assemble the coaxial cable to the USB board, then install this sub-assembly parts into the housing. (Original process: motor -> USB board -> coaxial cable).\n\nThe new fixtures arrived at 10/25. and validate ongoing. If the validation is successful, the solution will be shared with other manufacturing sites.'
     },
     {
-      status: 'Ongoing',
+      status: 'Issue 2',
       issueRiskStatus: 'B7-9 Battery Cover Step Difference Out of Spec\n(2nd Color) –Xinxiu\nFR 45.2%',
       rootCause: 'Bottom arc height of Xinxiu battery cover is at lower spec limit (some out-of-spec).',
       correctiveActions: '1. Supplier optimizing CNC process. Improved material under validation.'
@@ -55,14 +55,19 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
           <div className={styles.moduleSidebar}>
             <h3 className={styles.moduleTitle}>{title}</h3>
           </div>
-          <div className={styles.configCardsWrapper}>
-            <div className={styles.configCardsGrid}>
-              {data.map((item, index) => (
-                <div key={index} className={styles.configCard}>
-                  <div className={styles.configCardLabel}>{item.label}</div>
-                  <div className={styles.configCardValue}>{item.value}</div>
-                </div>
-              ))}
+          <div className={styles.productConfigContent}>
+            <div className={styles.configCardsWrapper}>
+              <div className={styles.configCardsGrid}>
+                {data.map((item, index) => (
+                  <div key={index} className={styles.configCard}>
+                    <div className={styles.configCardLabel}>{item.label}</div>
+                    <div className={styles.configCardValue}>{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.productImageWrapper}>
+              <img src="/phone.png" alt="Product" className={styles.productImage} />
             </div>
           </div>
         </div>
@@ -104,6 +109,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
       'Process': 'process',
       'Station': 'station',
       'Status': 'status',
+      'Item': 'status',
       'Efficiency': 'efficiency',
       'Output': 'output',
       'Category': 'category',
@@ -174,7 +180,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
       <div className={styles.popupContainer} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <h2 className={styles.title}>
-            <strong>{projectName}</strong> - Project Details
+            <strong>{projectName}</strong> - ROW + PRC
           </h2>
           <button className={styles.closeButton} onClick={onClose}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -199,8 +205,9 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
             <ModuleTable
               title="Manufacture Issue"
               data={manufactureIssueData}
-              headers={['Status', 'Issue, Risk and Status', 'Root Cause', 'Corrective Actions / Plan']}
+              headers={['Item', 'Issue, Risk and Status', 'Root Cause', 'Corrective Actions / Plan']}
               noHover={true}
+              customClass={styles.manufactureIssueTable}
             />
 
             <ModuleTable

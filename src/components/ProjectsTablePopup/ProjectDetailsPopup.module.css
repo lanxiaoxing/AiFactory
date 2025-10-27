@@ -143,8 +143,7 @@
   text-orientation: mixed;
   left: 50%;
   top: 50%;
-  margin-left: -50%;
-  margin-top: -50%;
+  transform: translate(-50%, -50%);
   padding: 12px;
 }
 
@@ -244,6 +243,11 @@
   min-height: 220px;
 }
 
+.keyProcessModule:hover {
+  transform: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
 .keyProcessModule .tableWrapper {
   flex: 1;
   padding: 24px 32px;
@@ -270,10 +274,11 @@
   color: #2c3e50;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-bottom: 1px solid #dee2e6;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   vertical-align: middle;
+  text-align: center;
 }
 
 .keyProcessTable .configValue {
@@ -336,8 +341,15 @@
 }
 
 /* Card-based styles for Product Config */
-.configCardsWrapper {
+.productConfigContent {
+  display: flex;
+  gap: 24px;
+  flex: 1;
   padding: 24px;
+  align-items: center;
+}
+
+.configCardsWrapper {
   flex: 1;
 }
 
@@ -346,6 +358,25 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   width: 100%;
+}
+
+.productImageWrapper {
+  flex-shrink: 0;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 280px;
 }
 
 .configCard {
@@ -496,20 +527,30 @@
   width: 8px;
 }
 
+/* Manufacture Issue table specific styling */
+.manufactureIssueTable th {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  border-bottom: 2px solid #dee2e6;
+}
+
 /* Line Plan table specific styling */
 .linePlanTable {
   border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .linePlanTable th {
-  background: linear-gradient(135deg, #003366 0%, #004080 100%);
-  color: white;
-  border-bottom: 2px solid #002244;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #2c3e50;
+  border-bottom: 2px solid #dee2e6;
   padding: 12px 16px;
   text-align: center;
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.4px;
+  width: 14.28%; /* 100% / 7 columns */
 }
 
 .linePlanTable td {
@@ -520,6 +561,7 @@
   font-size: 13px;
   background: white;
   vertical-align: middle;
+  width: 14.28%; /* 100% / 7 columns */
 }
 
 .linePlanTable tr:nth-child(even) td {
