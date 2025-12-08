@@ -31,30 +31,7 @@ const PopupMenu: React.FC<PopupMenuProps> = ({ countryName, onClose, onSelect })
     }
   ];
 
-  const saudiArabiaMenuOptions = [
-    {
-      title: 'Project Overview',
-      icon: '📊',
-      color: '#FF6B35'
-    },
-    {
-      title: 'NPI Readiness',
-      icon: '⚙️',
-      color: '#4ECDC4'
-    },
-    {
-      title: 'File Transfer ',
-      icon: '📁',
-      color: '#84a515ff'
-    },
-    {
-      title: 'More',
-      icon: '⋮',
-      color: '#5E72E4'
-    }
-  ];
-
-  const menuOptions = countryName.includes('Saudi Arabia') ? saudiArabiaMenuOptions : standardMenuOptions;
+  const menuOptions = standardMenuOptions;
 
   const handleOptionClick = (option: string) => {
     onSelect(option);

@@ -41,12 +41,7 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ countryName, onClose }) => {
     }
   ];
 
-  // Filter menu options based on country
-  const menuOptions = countryName.includes('Saudi Arabia')
-    ? allMenuOptions.filter(item =>
-        !['Interaction', 'History', 'KD'].includes(item.title)
-      )
-    : allMenuOptions;
+  const menuOptions = allMenuOptions;
 
   const handleOptionClick = (_option: string) => {
     onClose();
