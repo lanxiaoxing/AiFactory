@@ -5,6 +5,7 @@ import FileManager from '../../components/FileManager';
 import ProcessManager from '../../components/FileManager/ProcessManager';
 import ProjectsTablePopup from '../../components/ProjectsTablePopup';
 import MoreMenu from '../../components/MoreMenu';
+import StatsPanel from '../../components/StatsPanel';
 
 const countryMarkers = [
   {
@@ -149,6 +150,9 @@ const Home: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* 右侧统计面板 */}
+      <StatsPanel />
 
       {showPopupMenu && selectedCountry && (
         <PopupMenu

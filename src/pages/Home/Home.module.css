@@ -6,6 +6,7 @@
   height: 100vh;
   margin-top: -80px;
   padding-top: 80px;
+  padding-right: 320px; /* 为右侧统计面板留出空间 */
   position: relative;
   overflow: hidden;
 }
@@ -212,5 +213,25 @@
   100% {
     transform: translateX(-50%) translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .hero {
+    padding-right: 280px; /* 配合 StatsPanel 的响应式宽度 */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-right: 0; /* 移动端取消右侧边距 */
+    height: auto;
+    min-height: 60vh;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
   }
 }

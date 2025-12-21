@@ -1,0 +1,139 @@
+.statsPanel {
+  position: fixed;
+  right: 0;
+  top: 80px;
+  width: 320px;
+  height: calc(100vh - 80px);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.section {
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4ECDC4;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(78, 205, 196, 0.3);
+  text-transform: capitalize;
+}
+
+.subsection {
+  margin-bottom: 20px;
+}
+
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.statsList {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.statItem:last-child {
+  margin-bottom: 0;
+}
+
+.statItem:hover {
+  background: rgba(78, 205, 196, 0.1);
+  transform: translateX(-3px);
+}
+
+.statLabel {
+  font-size: 14px;
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  min-width: 30px;
+  text-align: right;
+}
+
+/* 滚动条样式 */
+.statsPanel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.statsPanel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.statsPanel::-webkit-scrollbar-thumb {
+  background: rgba(78, 205, 196, 0.5);
+  border-radius: 3px;
+}
+
+.statsPanel::-webkit-scrollbar-thumb:hover {
+  background: rgba(78, 205, 196, 0.7);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .statsPanel {
+    width: 280px;
+    padding: 15px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+  }
+
+  .subsectionTitle {
+    font-size: 14px;
+  }
+
+  .statLabel {
+    font-size: 13px;
+  }
+
+  .statValue {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .statsPanel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 0;
+    margin-top: 20px;
+  }
+}
