@@ -4,6 +4,7 @@ import ProjectsTablePopup from '../ProjectsTablePopup';
 
 interface MenuItem {
   title: string;
+  link?: string;
 }
 
 const Header: React.FC = () => {
@@ -27,7 +28,8 @@ const Header: React.FC = () => {
       title: 'Global Support'
     },
     {
-      title: 'Info Management'
+      title: 'Handbook',
+      link: 'https://app.powerbi.com/'
     }
   ];
 
@@ -39,8 +41,12 @@ const Header: React.FC = () => {
     setActiveMenu(null);
   };
 
-  const handleMenuClick = (title: string) => {
-    if (title === 'Projects') {
+  const handleMenuClick = (item: MenuItem) => {
+    if (item.link) {
+      window.open(item.link, '_blank');
+      return;
+    }
+    if (item.title === 'Projects') {
       setShowProjectsTable(true);
     }
   };
@@ -62,7 +68,7 @@ const Header: React.FC = () => {
               >
                 <span
                   className={styles.menuTitle}
-                  onClick={() => handleMenuClick(item.title)}
+                  onClick={() => handleMenuClick(item)}
                   style={{ cursor: 'pointer' }}
                 >
                   {item.title}
