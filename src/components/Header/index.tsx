@@ -25,11 +25,11 @@ const Header: React.FC = () => {
       title: 'WPC Plannning'
     },
     {
-      title: 'Global Support'
+      title: 'WPC Handbook',
+      link: 'https://app.powerbi.com/links/mRHVOijy6h?ctid=5c7d0b28-bdf8-410c-aa93-4df372b16203&pbi_source=linkShare&bookmarkGuid=ed840743-de3a-4ef4-8bbc-d87a51bcaea7'
     },
     {
-      title: 'Handbook',
-      link: 'https://app.powerbi.com/'
+      title: 'Global Support'
     }
   ];
 
