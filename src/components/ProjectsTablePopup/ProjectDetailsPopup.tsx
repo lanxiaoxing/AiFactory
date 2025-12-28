@@ -43,11 +43,82 @@ interface ProjectData {
 
 // Project specific data map
 const projectsData: { [key: string]: ProjectData } = {
+  'URUS25': {
+    productConfig: [
+      { label: 'Development', value: 'Shanghai' },
+      { label: 'Platform', value: 'SM8845' },
+      { label: 'Display', value: '6.7 inch POLED 3D' },
+      { label: 'Series', value: 'Signature' },
+      { label: 'Water Proof', value: 'IP69' },
+      { label: 'Battery', value: '5200mAh' }
+    ],
+    keyProcess: [
+      { label: 'SMT Key Process', value: '3 Mixed Pannel, Underfill' },
+      { label: 'Test Key Process', value: 'FOD, TeleCal, LCDCAL, SOIS, SWB, ACT' },
+      { label: 'Assy Key Process', value: 'Inlay LDA' },
+      { label: 'Package Key Process', value: 'UV Curing and Protective Film, Perfume spray' }
+    ],
+    manufactureIssue: [],
+    linePlan: [
+      { sites: 'WH', volume: '134', kd: 'LDA +PCBA+XCVR', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+      { sites: 'India', volume: '150', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'Indonesia', volume: '10', kd: 'XCVR', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'BR', volume: '12', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'AR', volume: '18', kd: 'PCBA+LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+    ]
+  },
+  'AVENGER26': {
+    productConfig: [
+      { label: 'Development', value: 'Shanghai' },
+      { label: 'Platform', value: 'SM7635' },
+      { label: 'Display', value: '6.7 inch POLED 3D' },
+      { label: 'Series', value: 'Moto Edge' },
+      { label: 'Water Proof', value: 'IP69' },
+      { label: 'Battery', value: '5000mAh / 7000mAh' }
+    ],
+    keyProcess: [
+      { label: 'SMT Key Process', value: '3 Mixed Pannel, Underfill' },
+      { label: 'Test Key Process', value: 'FOD, LCDCAL, SOIS,' },
+      { label: 'Assy Key Process', value: 'Inlay LDA' },
+      { label: 'Package Key Process', value: 'Perfume spray' }
+    ],
+    manufactureIssue: [],
+    linePlan: [
+      { sites: 'WH', volume: '1340', kd: 'LDA+70% XCVR', fg: '✓', smtLine: '4', beLine: '6', cfcLine: '5' },
+      { sites: 'India', volume: '2741', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'Indonesia', volume: '25', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'BR', volume: '480', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'AR', volume: '166', kd: '70%XCVR', fg: '✓', smtLine: '/', beLine: '1', cfcLine: '/' },
+    ]
+  },
+  'DALLAS26': {
+    productConfig: [
+      { label: 'Development', value: 'Xiamen' },
+      { label: 'Platform', value: 'SM6475' },
+      { label: 'Display', value: '6.7 inch POLED 2D' },
+      { label: 'Series', value: 'Moto G' },
+      { label: 'Water Proof', value: 'IP69' },
+      { label: 'Battery', value: '5200mAh' }
+    ],
+    keyProcess: [
+      { label: 'SMT Key Process', value: '3 Mixed Pannel, Underfill' },
+      { label: 'Test Key Process', value: 'FOD, LCDCAL, SOIS,' },
+      { label: 'Assy Key Process', value: 'Inlay LDA' },
+      { label: 'Package Key Process', value: '/' }
+    ],
+    manufactureIssue: [],
+    linePlan: [
+      { sites: 'WH', volume: '1199', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '2' },
+      { sites: 'India', volume: '480', kd: '/', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'BR', volume: '/', kd: '/', fg: '/', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'AR', volume: '/', kd: '/', fg: '/', smtLine: '/', beLine: '/', cfcLine: '/' },
+    ]
+  },
   'EQUATOR25': {
     productConfig: [
-      { label: 'Development', value: 'XiaMen' },
+      { label: 'Development', value: 'Xiamen' },
       { label: 'Platform', value: 'QC7750' },
-      { label: 'Display', value: '6.7 inch POLED' },
+      { label: 'Display', value: '6.7 inch POLED 2.5D' },
       { label: 'Series', value: 'Moto Edge' },
       { label: 'Water Proof', value: 'IP69' },
       { label: 'Battery', value: '4800mAh' }
@@ -55,115 +126,15 @@ const projectsData: { [key: string]: ProjectData } = {
     keyProcess: [
       { label: 'SMT Key Process', value: '3 Mixed Pannel, Underfill' },
       { label: 'Test Key Process', value: 'FOD, LCDCAL, SOIS, SWB' },
-      { label: 'Assy Key Process', value: 'Front Camera Bracket LDA，MIC LDA， Housing LDA，Inlay LDA' },
-      { label: 'Package Key Process', value: 'UV Curing and Protective Film' }
+      { label: 'Assy Key Process', value: 'Inlay LDA' },
+      { label: 'Package Key Process', value: 'UV Curing and Protective Film, Perfume spray' }
     ],
-    manufactureIssue: [
-      {
-        status: 'Issue 1',
-        issueRiskStatus: 'CQA2 Motor vibration weak\nFR 0.07%（7/10000）',
-        rootCause: 'Motor FPC contact abnormal',
-        correctiveActions: '1. Short-term Solution: fixture improved\nAdd shims to the fixture and raise the stopper height to reduce the pressing depth.\n\n2. Long-term Solution: Process Improvement\nThe process will be modified as follows: first, assemble the coaxial cable to the USB board, then install this sub-assembly parts into the housing. (Original process: motor -> USB board -> coaxial cable).\n\nThe new fixtures arrived at 10/25. and validate ongoing. If the validation is successful, the solution will be shared with other manufacturing sites.'
-      },
-      {
-        status: 'Issue 2',
-        issueRiskStatus: 'B7-9 Battery Cover Step Difference Out of Spec\n(2nd Color) –Xinxiu\nFR 45.2%',
-        rootCause: 'Bottom arc height of Xinxiu battery cover is at lower spec limit (some out-of-spec).',
-        correctiveActions: '1. Supplier optimizing CNC process. Improved material under validation.'
-      },
-    ],
+    manufactureIssue: [],
     linePlan: [
       { sites: 'WH', volume: '355 K', kd: 'PCBA + LDA', fg: '✓', smtLine: '2', beLine: '1', cfcLine: '1' },
       { sites: 'India', volume: '500 K', kd: 'PCBA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
       { sites: 'BR', volume: '50 K', kd: 'PCBA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
       { sites: 'AR', volume: '45 K', kd: 'X', fg: '✓', smtLine: '/', beLine: '1', cfcLine: '1' },
-    ]
-  },
-  'UTAH26': {
-    productConfig: [
-      { label: 'Development', value: 'Chicago' },
-      { label: 'Platform', value: 'QC8550' },
-      { label: 'Display', value: '6.5 inch OLED' },
-      { label: 'Series', value: 'Razr' },
-      { label: 'Water Proof', value: 'IP52' },
-      { label: 'Battery', value: '4200mAh' }
-    ],
-    keyProcess: [
-      { label: 'SMT Key Process', value: 'High Density, PoP' },
-      { label: 'Test Key Process', value: '5G MMWave, Audio' },
-      { label: 'Assy Key Process', value: 'Hinge Assy, Folding Screen' },
-      { label: 'Package Key Process', value: 'Premium Box' }
-    ],
-    manufactureIssue: [
-      {
-        status: 'Issue 1',
-        issueRiskStatus: 'Hinge noise during folding\nFR 0.12%',
-        rootCause: 'Lubrication uneven in early batches',
-        correctiveActions: '1. Auto-lubrication process optimized.\n2. screening 100% of current stock.'
-      }
-    ],
-    linePlan: [
-      { sites: 'WH', volume: '200 K', kd: 'PCBA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
-    ]
-  },
-  'MUMBAI25': {
-    productConfig: [
-      { label: 'Development', value: 'Beijing' },
-      { label: 'Platform', value: 'MTK9200' },
-      { label: 'Display', value: '6.8 inch LCD' },
-      { label: 'Series', value: 'G Series' },
-      { label: 'Water Proof', value: 'IP52' },
-      { label: 'Battery', value: '5000mAh' }
-    ],
-    keyProcess: [
-      { label: 'SMT Key Process', value: 'Standard SMT' },
-      { label: 'Test Key Process', value: 'RF Calibration' },
-      { label: 'Assy Key Process', value: 'Screw Fastening, Adhesive' },
-      { label: 'Package Key Process', value: 'Standard Packaging' }
-    ],
-    manufactureIssue: [
-      {
-        status: 'Issue 1',
-        issueRiskStatus: 'Camera lens dust\nFR 0.05%',
-        rootCause: 'Clean room static control issue',
-        correctiveActions: '1. Enhanced ionizers at assembly station.\n2. Hourly particle count monitoring.'
-      },
-      {
-        status: 'Issue 2',
-        issueRiskStatus: 'Battery cover gap\nFR 0.08%',
-        rootCause: 'Adhesive curing time insufficient',
-        correctiveActions: '1. Extended curing time by 10s.\n2. Added pressure fixture verification.'
-      }
-    ],
-    linePlan: [
-      { sites: 'India', volume: '800 K', kd: 'CKD', fg: '✓', smtLine: '2', beLine: '2', cfcLine: '1' },
-    ]
-  },
-  'URUS25': {
-    productConfig: [
-      { label: 'Development', value: 'Wuhan' },
-      { label: 'Platform', value: 'QC6450' },
-      { label: 'Display', value: '6.5 inch LCD' },
-      { label: 'Series', value: 'E Series' },
-      { label: 'Water Proof', value: 'IP52' },
-      { label: 'Battery', value: '5000mAh' }
-    ],
-    keyProcess: [
-      { label: 'SMT Key Process', value: 'Standard SMT' },
-      { label: 'Test Key Process', value: 'Basic Function Check' },
-      { label: 'Assy Key Process', value: 'Snap Fit' },
-      { label: 'Package Key Process', value: 'Eco Packaging' }
-    ],
-    manufactureIssue: [
-      {
-        status: 'Issue 1',
-        issueRiskStatus: 'Speaker mesh deformation\nFR 0.03%',
-        rootCause: 'Handling damage during sub-assy',
-        correctiveActions: '1. New handling tray implemented.\n2. Operator retraining completed.'
-      }
-    ],
-    linePlan: [
-      { sites: 'BR', volume: '300 K', kd: 'CKD', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
     ]
   }
 };

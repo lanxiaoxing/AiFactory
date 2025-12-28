@@ -15,28 +15,28 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
 
   const projectData = [
     {
-      project: 'EQUATOR25',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
-      project: 'UTAH26',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
-      project: 'MUMBAI25',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
       project: 'URUS25',
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
+    },
+    {
+      project: 'AVENGER26',
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
+    },
+    {
+      project: 'DALLAS26',
+      basicInformation: 'Basic Information',
+      keyProcess: 'Key Process',
+      manufactureIssue: 'Manufacture Issue',
+      linePlan: 'Line Plan'
+    },
+    {
+      project: 'EQUATOR25',
       basicInformation: 'Basic Information',
       keyProcess: 'Key Process',
       manufactureIssue: 'Manufacture Issue',
