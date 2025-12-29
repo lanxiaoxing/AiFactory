@@ -39,11 +39,13 @@ interface ProjectData {
   keyProcess: KeyProcessItem[];
   manufactureIssue: ManufactureIssueItem[];
   linePlan: LinePlanItem[];
+  image?: string;
 }
 
 // Project specific data map
 const projectsData: { [key: string]: ProjectData } = {
   'URUS25': {
+    image: '/URUS25.png',
     productConfig: [
       { label: 'Development', value: 'Shanghai' },
       { label: 'Platform', value: 'SM8845' },
@@ -75,6 +77,7 @@ const projectsData: { [key: string]: ProjectData } = {
     ]
   },
   'AVENGER26': {
+    image: '/AVENGER26.jpg',
     productConfig: [
       { label: 'Development', value: 'Shanghai' },
       { label: 'Platform', value: 'SM7635' },
@@ -112,6 +115,7 @@ const projectsData: { [key: string]: ProjectData } = {
     ]
   },
   'DALLAS26': {
+    image: '/DALLAS26.png',
     productConfig: [
       { label: 'Development', value: 'Xiamen' },
       { label: 'Platform', value: 'SM6475' },
@@ -142,6 +146,7 @@ const projectsData: { [key: string]: ProjectData } = {
     ]
   },
   'EQUATOR25': {
+    image: '/EQUATOR25.png',
     productConfig: [
       { label: 'Development', value: 'Xiamen' },
       { label: 'Platform', value: 'QC7750' },
@@ -172,13 +177,14 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     productConfig: [],
     keyProcess: [],
     manufactureIssue: [],
-    linePlan: []
+    linePlan: [],
+    image: '/phone.png'
   };
 
-  const { productConfig: productConfigData, keyProcess: keyProcessData, manufactureIssue: manufactureIssueData, linePlan: linePlanData } = currentProjectData;
+  const { productConfig: productConfigData, keyProcess: keyProcessData, manufactureIssue: manufactureIssueData, linePlan: linePlanData, image: projectImage } = currentProjectData;
 
   // Product Config Card Component - Card-based layout
-  const ProductConfigTable: React.FC<{ title: string; data: any[] }> = ({ title, data }) => {
+  const ProductConfigTable: React.FC<{ title: string; data: any[]; image?: string }> = ({ title, data, image }) => {
     return (
       <div className={`${styles.moduleSection} ${styles.productConfigModule}`}>
         <div className={styles.moduleWithSidebar}>
@@ -197,7 +203,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
               </div>
             </div>
             <div className={styles.productImageWrapper}>
-              <img src="/phone.png" alt="Product" className={styles.productImage} />
+              <img src={image || "/phone.png"} alt="Product" className={styles.productImage} />
             </div>
           </div>
         </div>
@@ -325,6 +331,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
             <ProductConfigTable
               title="Product Config"
               data={productConfigData}
+              image={projectImage}
             />
 
             <ProductConfigInfo
