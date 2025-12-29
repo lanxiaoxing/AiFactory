@@ -90,24 +90,30 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
 }
 
 @keyframes ecgPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.4;
     filter: drop-shadow(0 0 3px rgba(244, 67, 54, 0.3));
   }
+
   25% {
     opacity: 0.6;
     filter: drop-shadow(0 0 5px rgba(244, 67, 54, 0.5));
   }
+
   50% {
     opacity: 0.5;
     filter: drop-shadow(0 0 4px rgba(244, 67, 54, 0.4));
   }
+
   75% {
     opacity: 0.55;
     filter: drop-shadow(0 0 4px rgba(244, 67, 54, 0.45));
@@ -170,7 +176,7 @@
 .clickableCell {
   cursor: pointer;
   position: relative;
-  transition: all 0.2s ease;
+
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 8px 12px;
@@ -181,13 +187,10 @@
   border-color: #2196f3;
   color: #1976d2;
   font-weight: 500;
-  transform: scale(1.02);
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
 }
 
 .clickableCell:active {
   background-color: #bbdefb;
-  transform: scale(0.98);
 }
 
 
@@ -204,12 +207,10 @@
 
 .clickableProjectName {
   cursor: pointer;
-  transition: all 0.2s ease;
+
 }
 
-.clickableProjectName:hover {
-  transform: scale(1.02);
-}
+
 
 .clickIndicator {
   margin-left: 8px;
@@ -233,11 +234,14 @@
 }
 
 @keyframes breathe {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
     box-shadow: 0 0 6px rgba(76, 175, 80, 0.6);
   }
+
   50% {
     transform: scale(1.2);
     opacity: 0.7;
@@ -252,11 +256,14 @@
 }
 
 @keyframes breatheYellow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
     box-shadow: 0 0 6px rgba(255, 193, 7, 0.6);
   }
+
   50% {
     transform: scale(1.2);
     opacity: 0.7;
@@ -301,6 +308,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
