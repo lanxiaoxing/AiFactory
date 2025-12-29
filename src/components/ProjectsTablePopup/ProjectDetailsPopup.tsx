@@ -58,7 +58,14 @@ const projectsData: { [key: string]: ProjectData } = {
       { label: 'Assy Key Process', value: 'Inlay LDA' },
       { label: 'Package Key Process', value: 'UV Curing and Protective Film, Perfume spray' }
     ],
-    manufactureIssue: [],
+    manufactureIssue: [
+      {
+        status: '1',
+        issueRiskStatus: 'Airtight issue of the middle frame',
+        rootCause: 'The gap of leak testing equipment at the supplier and the factory.',
+        correctiveActions: '1. The supplier has added two rounds of airtightness tests. The first one is an airtightness test after the CFC process (pressure test on the small A surface), and the second one is using the old fixtures (for sealing the inner cavity) after assembly.\n2. RD&NPE assisted in optimizing the fixtures for the new airtightness testing station at the Wuhan factory\'s L5.'
+      }
+    ],
     linePlan: [
       { sites: 'WH', volume: '134', kd: 'LDA +PCBA+XCVR', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
       { sites: 'India', volume: '150', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
@@ -82,7 +89,20 @@ const projectsData: { [key: string]: ProjectData } = {
       { label: 'Assy Key Process', value: 'Inlay LDA' },
       { label: 'Package Key Process', value: 'Perfume spray' }
     ],
-    manufactureIssue: [],
+    manufactureIssue: [
+      {
+        status: '1',
+        issueRiskStatus: 'Airtight issue of LDA',
+        rootCause: 'The middle frame of the Huayu is defective',
+        correctiveActions: '1. Arrange for the replacement of BYD materials for production;\n2. For defective products, arrange for the supplier to return them for analysis and provide a report;\n3. In the build process of Huayu middle frame, arrange for the defective products not to be repaired, temporarily freeze them, and wait for subsequent glue application repair and arrange for verification form verification.'
+      },
+      {
+        status: '2',
+        issueRiskStatus: 'USB communication issue',
+        rootCause: 'To address the safety regulations and certification issues, PVT introduced new common-mode inductors, which led to poor USB communication. The new USB parameters of PVT, the UCT stress test data FR 10.5%.',
+        correctiveActions: '1. The USB parameters were optimized and incorporated into the software for improvement. It has been imported.\n2. The BT site was equipped with a signal amplifier cable.\n3. The UCT updated the test plan, switching from the BEEFI test plan that involves inserting a USB cable to scanning the QR code of the local WIFI for testing.'
+      }
+    ],
     linePlan: [
       { sites: 'WH', volume: '1340', kd: 'LDA+70% XCVR', fg: '✓', smtLine: '4', beLine: '6', cfcLine: '5' },
       { sites: 'India', volume: '2741', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
@@ -106,7 +126,14 @@ const projectsData: { [key: string]: ProjectData } = {
       { label: 'Assy Key Process', value: 'Inlay LDA' },
       { label: 'Package Key Process', value: '/' }
     ],
-    manufactureIssue: [],
+    manufactureIssue: [
+      {
+        status: '1',
+        issueRiskStatus: 'BYD LDA part have marks on housing are difficult to clean, supplier: BYD Coal Smoke FR 11% Lavender Mist FR 100%',
+        rootCause: 'Compared with the surface morphology after green laser engraving, the surface depressions and holes of the material are larger than those of Green (the surface after Green\'s laser engraving is more fine).',
+        correctiveActions: '1. BYD improved material regression verification ongoing (refer to Green for lowering the laser parameters)\n2 WHP arrange cross-validation comparative analysis (1st/2nd housing and glue):'
+      }
+    ],
     linePlan: [
       { sites: 'WH', volume: '1199', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '2' },
       { sites: 'India', volume: '480', kd: '/', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
