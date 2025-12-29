@@ -356,6 +356,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
               data={linePlanData}
               headers={['Sites', 'Volume', 'KD', 'FG', 'SMT Line', 'BE Line', 'CFC Line']}
               customClass={styles.linePlanTable}
+              noHover={true}
             />
           </div>
         </div>

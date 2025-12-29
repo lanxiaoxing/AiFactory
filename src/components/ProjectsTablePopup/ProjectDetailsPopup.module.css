@@ -34,6 +34,7 @@
     transform: translateY(60px) scale(0.92);
     filter: blur(4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -226,17 +227,9 @@
   transition: none;
 }
 
-.keyProcessTable tbody tr:hover {
-  transform: none;
-  box-shadow: none;
-  background: transparent;
-}
 
-.keyProcessTable tbody tr:hover .configLabel,
-.keyProcessTable tbody tr:hover .configValue {
-  background: inherit;
-  transform: none;
-}
+
+
 
 /* Adjust Key Process module height for coordination */
 .keyProcessModule .moduleWithSidebar {
@@ -554,7 +547,8 @@
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.4px;
-  width: 14.28%; /* 100% / 7 columns */
+  width: 14.28%;
+  /* 100% / 7 columns */
 }
 
 .linePlanTable td {
@@ -565,20 +559,17 @@
   font-size: 13px;
   background: white;
   vertical-align: middle;
-  width: 14.28%; /* 100% / 7 columns */
+  width: 14.28%;
+  /* 100% / 7 columns */
 }
 
 .linePlanTable tr:nth-child(even) td {
   background: #fafbfc;
 }
 
-.linePlanTable tr:hover td {
-  background-color: #f8f9fa;
-}
 
-.linePlanTable tr:nth-child(even):hover td {
-  background-color: #f1f3f4;
-}
+
+
 
 .content::-webkit-scrollbar-track {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
