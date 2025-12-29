@@ -316,7 +316,11 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
       <div className={styles.popupContainer} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <h2 className={styles.title}>
-            <strong>{projectName}</strong> - ROW + PRC
+            <strong>{projectName}</strong> - {((name) => {
+              if (name === 'AVENGER26') return 'ROW';
+              if (name === 'DALLAS26') return 'NA';
+              return 'ROW + PRC';
+            })(projectName)}
           </h2>
           <button className={styles.closeButton} onClick={onClose}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
