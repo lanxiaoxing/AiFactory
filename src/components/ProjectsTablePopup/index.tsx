@@ -121,7 +121,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                     }}
                   >
                     <div className={styles.projectNameContainer}>
-                      <div className={`${styles.statusLight} ${project.project === 'URUS25' ? styles.yellowLight : ''}`}></div>
+                      <div className={`${styles.statusLight} ${project.project === 'AVENGER26' ? styles.yellowLight : ''}`}></div>
                       {project.project}
                       <span className={styles.clickIndicator}>📊</span>
                     </div>

@@ -70,10 +70,10 @@ const projectsData: { [key: string]: ProjectData } = {
     ],
     linePlan: [
       { sites: 'WH', volume: '134', kd: 'LDA +PCBA+XCVR', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
-      { sites: 'India', volume: '150', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
-      { sites: 'Indonesia', volume: '10', kd: 'XCVR', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
-      { sites: 'BR', volume: '12', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
-      { sites: 'AR', volume: '18', kd: 'PCBA+LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'India', volume: '150', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+      { sites: 'Indonesia', volume: '10', kd: 'XCVR', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '1' },
+      { sites: 'BR', volume: '12', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+      { sites: 'AR', volume: '18', kd: 'PCBA+LDA', fg: '✓', smtLine: '/', beLine: '1', cfcLine: '1' },
     ]
   },
   'AVENGER26': {
@@ -108,10 +108,10 @@ const projectsData: { [key: string]: ProjectData } = {
     ],
     linePlan: [
       { sites: 'WH', volume: '1340', kd: 'LDA+70% XCVR', fg: '✓', smtLine: '4', beLine: '6', cfcLine: '5' },
-      { sites: 'India', volume: '2741', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
-      { sites: 'Indonesia', volume: '25', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
-      { sites: 'BR', volume: '480', kd: 'LDA', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
-      { sites: 'AR', volume: '166', kd: '70%XCVR', fg: '✓', smtLine: '/', beLine: '1', cfcLine: '/' },
+      { sites: 'India', volume: '2741', kd: 'LDA', fg: '✓', smtLine: '5', beLine: '6', cfcLine: '6' },
+      { sites: 'Indonesia', volume: '25', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+      { sites: 'BR', volume: '480', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
+      { sites: 'AR', volume: '166', kd: '70%XCVR', fg: '✓', smtLine: '/', beLine: '1', cfcLine: '1' },
     ]
   },
   'DALLAS26': {
@@ -140,7 +140,7 @@ const projectsData: { [key: string]: ProjectData } = {
     ],
     linePlan: [
       { sites: 'WH', volume: '1199', kd: 'LDA', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '2' },
-      { sites: 'India', volume: '480', kd: '/', fg: '✓', smtLine: '/', beLine: '/', cfcLine: '/' },
+      { sites: 'India', volume: '480', kd: '/', fg: '✓', smtLine: '1', beLine: '1', cfcLine: '1' },
       { sites: 'BR', volume: '/', kd: '/', fg: '/', smtLine: '/', beLine: '/', cfcLine: '/' },
       { sites: 'AR', volume: '/', kd: '/', fg: '/', smtLine: '/', beLine: '/', cfcLine: '/' },
     ]
@@ -178,7 +178,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
     keyProcess: [],
     manufactureIssue: [],
     linePlan: [],
-    image: '/phone.png'
+    image: '/robot.png'
   };
 
   const { productConfig: productConfigData, keyProcess: keyProcessData, manufactureIssue: manufactureIssueData, linePlan: linePlanData, image: projectImage } = currentProjectData;
@@ -203,7 +203,7 @@ const ProjectDetailsPopup: React.FC<ProjectDetailsPopupProps> = ({ projectName, 
               </div>
             </div>
             <div className={styles.productImageWrapper}>
-              <img src={image || "/phone.png"} alt="Product" className={styles.productImage} />
+              <img src={image || "/robot.png"} alt="Product" className={styles.productImage} />
             </div>
           </div>
         </div>
