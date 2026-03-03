@@ -254,11 +254,11 @@
 }
 
 .radiationLine {
-  animation: lineDrawIn 2s ease-out both;
+  animation: lineDrawIn 4s ease-out both;
 }
 
 .radiationLineGlow {
-  animation: lineDrawIn 2s ease-out both, lineGlowPulse 3s ease-in-out infinite;
+  animation: lineDrawIn 4s ease-out both, lineGlowPulse 6s ease-in-out infinite;
 }
 
 @keyframes lineDrawIn {
@@ -281,13 +281,13 @@
 
   0%,
   100% {
-    stroke-opacity: 0.15;
-    stroke-width: 0.15;
+    stroke-opacity: 0.1;
+    stroke-width: 0.12;
   }
 
   50% {
-    stroke-opacity: 0.35;
-    stroke-width: 0.25;
+    stroke-opacity: 0.25;
+    stroke-width: 0.18;
   }
 }
 
@@ -304,10 +304,10 @@
 }
 
 .wuhanMarker .markerCore {
-  width: 16px;
-  height: 16px;
-  background: radial-gradient(circle, #FF6666 0%, #FF4444 50%, #CC0000 100%);
-  box-shadow: 0 0 30px rgba(255, 68, 68, 0.8), 0 0 60px rgba(255, 68, 68, 0.4);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, #FF8888 0%, #FF6666 50%, #DD3333 100%);
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.5), 0 0 40px rgba(255, 68, 68, 0.2);
 }
 
 .wuhanPulse {
@@ -319,7 +319,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: wuhanPulseWave 2.5s ease-out infinite;
+  animation: wuhanPulseWave 4s ease-out infinite;
   z-index: 1;
 }
 
@@ -332,18 +332,18 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: wuhanPulseWave 2.5s ease-out 1.25s infinite;
+  animation: wuhanPulseWave 4s ease-out 2s infinite;
   z-index: 1;
 }
 
 @keyframes wuhanPulseWave {
   0% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.8;
+    opacity: 0.5;
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(4);
+    transform: translate(-50%, -50%) scale(3);
     opacity: 0;
   }
 }
