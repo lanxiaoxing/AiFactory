@@ -6,90 +6,47 @@ interface ProjectsTablePopupProps {
   onClose: () => void;
 }
 
+const projectData = [
+  {
+    project: 'URUS25',
+    color: '#4ECDC4',
+    glow: 'rgba(78, 205, 196, 0.2)',
+    status: 'green',
+  },
+  {
+    project: 'AVENGER26',
+    color: '#FF6B6B',
+    glow: 'rgba(255, 107, 107, 0.2)',
+    status: 'yellow',
+  },
+  {
+    project: 'DALLAS26',
+    color: '#A78BFA',
+    glow: 'rgba(167, 139, 250, 0.2)',
+    status: 'green',
+  },
+  {
+    project: 'EQUATOR25',
+    color: '#F59E0B',
+    glow: 'rgba(245, 158, 11, 0.2)',
+    status: 'green',
+  },
+];
+
 const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
-  const [showOptionsMenu, setShowOptionsMenu] = useState(false);
-  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState('');
-  const [selectedColumn, setSelectedColumn] = useState('');
   const [showProjectDetails, setShowProjectDetails] = useState(false);
 
-  const projectData = [
-    {
-      project: 'URUS25',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
-      project: 'AVENGER26',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
-      project: 'DALLAS26',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    },
-    {
-      project: 'EQUATOR25',
-      basicInformation: 'Basic Information',
-      keyProcess: 'Key Process',
-      manufactureIssue: 'Manufacture Issue',
-      linePlan: 'Line Plan'
-    }
-  ];
-
-  const getOptionsForColumn = (columnName: string) => {
-    switch (columnName) {
-      case 'Basic Information':
-        return ['Product Config', 'Team Member', 'Product Volume'];
-      case 'Key Process':
-        return ['SMT', 'BE', 'CFC'];
-      case 'Manufacture Issue':
-        return ['SMT Issue', 'BE Issue', 'CFC Issue'];
-      case 'Line Plan':
-        return ['Line Capacity', 'Line Layout'];
-      default:
-        return [];
-    }
-  };
-
-  const handleCellClick = (projectName: string, columnName: string) => {
-    setSelectedProject(projectName);
-    setSelectedColumn(columnName);
-    setShowOptionsMenu(true);
-  };
-
-  const handleOptionClick = (option: string) => {
-    alert(`${selectedProject} - ${selectedColumn}: ${option}`);
-    setShowOptionsMenu(false);
-  };
-
-  const handlePopupTableClick = () => {
-    // Close options menu when clicking on the popup table area
-    if (showOptionsMenu) {
-      setShowOptionsMenu(false);
-    }
-  };
-
-  const handleProjectNameClick = (projectName: string) => {
+  const handleProjectClick = (projectName: string) => {
     setSelectedProject(projectName);
     setShowProjectDetails(true);
   };
 
-
   return (
     <div className={styles.popupOverlay} onClick={onClose}>
-      <div className={styles.popupTable} onClick={(e) => {
-        e.stopPropagation();
-        handlePopupTableClick();
-      }}>
-        <div className={styles.popupHeader} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.popupContainer} onClick={(e) => e.stopPropagation()}>
+        {/* Header */}
+        <div className={styles.popupHeader}>
           <h2 className={styles.popupTitle}>
             <strong>Ongoing Projects</strong>
             <span className={styles.projectCount}>{projectData.length}</span>
@@ -108,95 +65,33 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
             </svg>
           </button>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.projectsTable}>
-            <tbody>
-              {projectData.map((project, rowIndex) => (
-                <tr key={rowIndex}>
-                  <td
-                    className={`${styles.projectName} ${styles.clickableProjectName}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleProjectNameClick(project.project);
-                    }}
-                  >
-                    <div className={styles.projectNameContainer}>
-                      <div className={`${styles.statusLight} ${project.project === 'AVENGER26' ? styles.yellowLight : ''}`}></div>
-                      {project.project}
-                      <span className={styles.clickIndicator}>📊</span>
-                    </div>
-                  </td>
-                  <td
-                    className={styles.clickableCell}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setMenuPosition({ x: rect.right + 10, y: rect.top });
-                      handleCellClick(project.project, 'Basic Information');
-                    }}
-                  >
-                    {project.basicInformation}
-                  </td>
-                  <td
-                    className={styles.clickableCell}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setMenuPosition({ x: rect.right + 10, y: rect.top });
-                      handleCellClick(project.project, 'Key Process');
-                    }}
-                  >
-                    {project.keyProcess}
-                  </td>
-                  <td
-                    className={styles.clickableCell}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setMenuPosition({ x: rect.right + 10, y: rect.top });
-                      handleCellClick(project.project, 'Manufacture Issue');
-                    }}
-                  >
-                    {project.manufactureIssue}
-                  </td>
-                  <td
-                    className={styles.clickableCell}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setMenuPosition({ x: rect.right + 10, y: rect.top });
-                      handleCellClick(project.project, 'Line Plan');
-                    }}
-                  >
-                    {project.linePlan}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+        {/* 2×2 Card Grid */}
+        <div className={styles.cardGrid}>
+          {projectData.map((project, index) => (
+            <div
+              key={project.project}
+              className={styles.projectCard}
+              style={{
+                '--card-color': project.color,
+                '--card-glow': project.glow,
+                animationDelay: `${index * 0.1}s`,
+              } as React.CSSProperties}
+              onClick={() => handleProjectClick(project.project)}
+            >
+              <div className={styles.cardHeader}>
+                <div className={`${styles.statusLight} ${project.status === 'yellow' ? styles.yellowLight : ''}`}></div>
+                <span className={styles.cardProjectName}>{project.project}</span>
+              </div>
+              <div className={styles.cardFooter}>
+                <span className={styles.cardSubtext}>View Details</span>
+                <span className={styles.cardArrow}>→</span>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {showOptionsMenu && (
-          <div
-            className={styles.linePlanOptions}
-            style={{
-              left: `${menuPosition.x}px`,
-              top: `${menuPosition.y}px`,
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {getOptionsForColumn(selectedColumn).map((option, index) => (
-              <div
-                key={index}
-                className={styles.linePlanOption}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option}
-              </div>
-            ))}
-          </div>
-        )}
-
+        {/* Project Details Popup */}
         {showProjectDetails && (
           <ProjectDetailsPopup
             projectName={selectedProject}
