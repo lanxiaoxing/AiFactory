@@ -7,6 +7,14 @@ import ProjectsTablePopup from '../../components/ProjectsTablePopup';
 import MoreMenu from '../../components/MoreMenu';
 import StatsPanel from '../../components/StatsPanel';
 
+// 武汉中心点
+const wuhanCenter = {
+  name: 'Wuhan',
+  nameEn: '武汉',
+  position: { x: 73, y: 44 },
+  color: '#FF4444',
+};
+
 const countryMarkers = [
   {
     name: 'Brazil',
@@ -123,6 +131,107 @@ const Home: React.FC = () => {
       <div className={styles.hero}>
         <div className={styles.backgroundImage}></div>
         <div className={styles.mapOverlay}>
+          {/* SVG 辐射线层 */}
+          <svg className={styles.radiationSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              {countryMarkers.map((country, index) => (
+                <linearGradient
+                  key={`grad-${index}`}
+                  id={`lineGrad-${index}`}
+                  x1={`${wuhanCenter.position.x}%`}
+                  y1={`${wuhanCenter.position.y}%`}
+                  x2={`${country.position.x}%`}
+                  y2={`${country.position.y}%`}
+                >
+                  <stop offset="0%" stopColor={wuhanCenter.color} stopOpacity="0.9" />
+                  <stop offset="100%" stopColor={country.color} stopOpacity="0.6" />
+                </linearGradient>
+              ))}
+            </defs>
+            {/* 辐射线 */}
+            {countryMarkers.map((country, index) => (
+              <g key={`line-group-${index}`}>
+                {/* 底层光晕线 */}
+                <line
+                  x1={wuhanCenter.position.x}
+                  y1={wuhanCenter.position.y}
+                  x2={country.position.x}
+                  y2={country.position.y}
+                  stroke={country.color}
+                  strokeWidth="0.15"
+                  strokeOpacity="0.2"
+                  className={styles.radiationLineGlow}
+                  style={{ animationDelay: `${index * 0.4}s` }}
+                />
+                {/* 主辐射线 */}
+                <line
+                  x1={wuhanCenter.position.x}
+                  y1={wuhanCenter.position.y}
+                  x2={country.position.x}
+                  y2={country.position.y}
+                  stroke={`url(#lineGrad-${index})`}
+                  strokeWidth="0.08"
+                  strokeDasharray="0.5 0.3"
+                  className={styles.radiationLine}
+                  style={{ animationDelay: `${index * 0.4}s` }}
+                />
+                {/* 流光粒子效果 */}
+                <circle r="0.25" fill={wuhanCenter.color} opacity="0.9">
+                  <animateMotion
+                    dur={`${2.5 + index * 0.3}s`}
+                    repeatCount="indefinite"
+                    begin={`${index * 0.5}s`}
+                    path={`M${wuhanCenter.position.x},${wuhanCenter.position.y} L${country.position.x},${country.position.y}`}
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0;0.9;0.9;0"
+                    dur={`${2.5 + index * 0.3}s`}
+                    repeatCount="indefinite"
+                    begin={`${index * 0.5}s`}
+                  />
+                </circle>
+                {/* 第二个流光粒子，错开时间 */}
+                <circle r="0.18" fill={country.color} opacity="0.7">
+                  <animateMotion
+                    dur={`${3 + index * 0.2}s`}
+                    repeatCount="indefinite"
+                    begin={`${index * 0.5 + 1.2}s`}
+                    path={`M${wuhanCenter.position.x},${wuhanCenter.position.y} L${country.position.x},${country.position.y}`}
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0;0.7;0.7;0"
+                    dur={`${3 + index * 0.2}s`}
+                    repeatCount="indefinite"
+                    begin={`${index * 0.5 + 1.2}s`}
+                  />
+                </circle>
+              </g>
+            ))}
+          </svg>
+
+          {/* 武汉中心标记 */}
+          <div
+            className={`${styles.countryMarker} ${styles.wuhanMarker}`}
+            style={{
+              left: `${wuhanCenter.position.x}%`,
+              top: `${wuhanCenter.position.y}%`,
+              '--marker-color': wuhanCenter.color,
+            } as React.CSSProperties}
+          >
+            <div className={styles.markerRing}></div>
+            <div className={styles.markerCore}></div>
+            <div className={styles.wuhanPulse}></div>
+            <div className={styles.wuhanPulse2}></div>
+            <div className={styles.markerLabel}>
+              <div className={styles.labelName}>
+                {wuhanCenter.name}
+              </div>
+            </div>
+          </div>
+
+          {/* 其他城市标记 */}
           {countryMarkers.map((country, index) => (
             <div
               key={index}

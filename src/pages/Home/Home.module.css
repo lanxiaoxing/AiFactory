@@ -6,7 +6,8 @@
   height: 100vh;
   margin-top: -80px;
   padding-top: 80px;
-  padding-right: 320px; /* 为右侧统计面板留出空间 */
+  padding-right: 320px;
+  /* 为右侧统计面板留出空间 */
   position: relative;
   overflow: hidden;
 }
@@ -142,10 +143,13 @@
 }
 
 @keyframes lockGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.1);
@@ -219,13 +223,15 @@
 /* 响应式设计 */
 @media (max-width: 1024px) {
   .hero {
-    padding-right: 280px; /* 配合 StatsPanel 的响应式宽度 */
+    padding-right: 280px;
+    /* 配合 StatsPanel 的响应式宽度 */
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding-right: 0; /* 移动端取消右侧边距 */
+    padding-right: 0;
+    /* 移动端取消右侧边距 */
     height: auto;
     min-height: 60vh;
   }
@@ -233,5 +239,111 @@
   .home {
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* ========== 辐射线 SVG 层 ========== */
+.radiationSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.radiationLine {
+  animation: lineDrawIn 2s ease-out both;
+}
+
+.radiationLineGlow {
+  animation: lineDrawIn 2s ease-out both, lineGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes lineDrawIn {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes lineGlowPulse {
+
+  0%,
+  100% {
+    stroke-opacity: 0.15;
+    stroke-width: 0.15;
+  }
+
+  50% {
+    stroke-opacity: 0.35;
+    stroke-width: 0.25;
+  }
+}
+
+/* ========== 武汉中心标记 ========== */
+.wuhanMarker {
+  cursor: default !important;
+  z-index: 5 !important;
+  animation: markerEntrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  animation-delay: 0s !important;
+}
+
+.wuhanMarker:hover {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+.wuhanMarker .markerCore {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #FF6666 0%, #FF4444 50%, #CC0000 100%);
+  box-shadow: 0 0 30px rgba(255, 68, 68, 0.8), 0 0 60px rgba(255, 68, 68, 0.4);
+}
+
+.wuhanPulse {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--marker-color);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: wuhanPulseWave 2.5s ease-out infinite;
+  z-index: 1;
+}
+
+.wuhanPulse2 {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--marker-color);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: wuhanPulseWave 2.5s ease-out 1.25s infinite;
+  z-index: 1;
+}
+
+@keyframes wuhanPulseWave {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
   }
 }
