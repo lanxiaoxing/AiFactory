@@ -9,8 +9,8 @@ import StatsPanel from '../../components/StatsPanel';
 
 // 武汉中心点
 const wuhanCenter = {
-  name: 'Wuhan',
-  nameEn: '武汉',
+  name: 'WHSC',
+  nameEn: '',
   position: { x: 73, y: 44 },
   color: '#FF4444',
 };
@@ -206,8 +206,6 @@ const Home: React.FC = () => {
           >
             <div className={styles.markerRing}></div>
             <div className={styles.markerCore}></div>
-            <div className={styles.wuhanPulse}></div>
-            <div className={styles.wuhanPulse2}></div>
             <div className={styles.markerLabel}>
               <div className={styles.labelName}>
                 {wuhanCenter.name}
