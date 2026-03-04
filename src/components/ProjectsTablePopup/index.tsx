@@ -16,7 +16,8 @@ const projectData = [
     glow: 'rgba(78, 205, 196, 0.2)',
     status: 'green',
     phase: 'pre' as Phase,
-    tags: ['In house', 'PVT'],
+    typeTag: 'In house',
+    phaseTag: 'PVT',
   },
   {
     project: 'AVENGER26',
@@ -24,7 +25,8 @@ const projectData = [
     glow: 'rgba(255, 107, 107, 0.2)',
     status: 'yellow',
     phase: 'post' as Phase,
-    tags: ['In house', 'OK25'],
+    typeTag: 'In house',
+    phaseTag: 'OK25',
   },
   {
     project: 'DALLAS26',
@@ -32,7 +34,8 @@ const projectData = [
     glow: 'rgba(167, 139, 250, 0.2)',
     status: 'green',
     phase: 'post' as Phase,
-    tags: ['ODM', 'OK2R'],
+    typeTag: 'ODM',
+    phaseTag: 'OK2R',
   },
   {
     project: 'EQUATOR25',
@@ -40,7 +43,8 @@ const projectData = [
     glow: 'rgba(245, 158, 11, 0.2)',
     status: 'green',
     phase: 'pre' as Phase,
-    tags: [],
+    typeTag: 'In house',
+    phaseTag: 'PVT',
   },
 ];
 
@@ -120,13 +124,11 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                 <div className={`${styles.statusLight} ${project.status === 'yellow' ? styles.yellowLight : ''}`}></div>
                 <span className={styles.cardProjectName}>{project.project}</span>
               </div>
-              {project.tags.length > 0 && (
-                <div className={styles.cardTags}>
-                  {project.tags.map((tag) => (
-                    <span key={tag} className={styles.cardTag}>{tag}</span>
-                  ))}
-                </div>
-              )}
+              <div className={styles.cardTags}>
+                <span className={styles.cardTypeTag}>{project.typeTag}</span>
+                <span className={styles.tagSeparator}>·</span>
+                <span className={styles.cardPhaseTag}>{project.phaseTag}</span>
+              </div>
             </div>
           ))}
         </div>

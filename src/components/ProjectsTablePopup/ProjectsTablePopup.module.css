@@ -348,21 +348,37 @@
 /* 标签 */
 .cardTags {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
   justify-content: center;
 }
 
-.cardTag {
+.cardTypeTag {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 2px 10px;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
+  color: rgba(180, 200, 230, 0.8);
+  background: rgba(60, 100, 160, 0.15);
+  border-left: 2px solid rgba(100, 160, 255, 0.5);
+  padding: 3px 10px 3px 8px;
+  border-radius: 0 6px 6px 0;
+  letter-spacing: 0.3px;
+}
+
+.tagSeparator {
+  display: none;
+}
+
+.cardPhaseTag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(0, 200, 180, 0.35) 0%, rgba(0, 150, 220, 0.4) 100%);
+  border: 1px solid rgba(0, 200, 200, 0.25);
+  border-radius: 12px;
+  padding: 3px 12px;
+  letter-spacing: 0.8px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px rgba(0, 200, 200, 0.12);
 }
 
 /* 底部提示 */
