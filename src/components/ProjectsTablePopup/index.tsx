@@ -87,7 +87,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
                 className={`${styles.filterButton} ${activeFilter === filter ? styles.filterButtonActive : ''}`}
                 onClick={() => setActiveFilter(filter)}
               >
-                {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                {{ all: 'All', pre: 'Pre-pilot', post: 'Post-pilot' }[filter]}
               </button>
             ))}
             <div
