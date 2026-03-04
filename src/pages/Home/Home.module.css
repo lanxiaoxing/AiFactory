@@ -254,11 +254,11 @@
 }
 
 .radiationLine {
-  animation: lineDrawIn 4s ease-out both;
+  animation: lineDrawIn 6s ease-out both;
 }
 
 .radiationLineGlow {
-  animation: lineDrawIn 4s ease-out both, lineGlowPulse 6s ease-in-out infinite;
+  animation: lineDrawIn 6s ease-out both, lineGlowPulse 8s ease-in-out infinite;
 }
 
 @keyframes lineDrawIn {
@@ -268,7 +268,7 @@
   }
 
   50% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   100% {
@@ -281,13 +281,13 @@
 
   0%,
   100% {
-    stroke-opacity: 0.1;
-    stroke-width: 0.12;
+    stroke-opacity: 0.12;
+    stroke-width: 0.15;
   }
 
   50% {
-    stroke-opacity: 0.25;
-    stroke-width: 0.18;
+    stroke-opacity: 0.2;
+    stroke-width: 0.2;
   }
 }
 

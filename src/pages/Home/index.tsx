@@ -143,8 +143,8 @@ const Home: React.FC = () => {
                   x2={`${country.position.x}%`}
                   y2={`${country.position.y}%`}
                 >
-                  <stop offset="0%" stopColor={wuhanCenter.color} stopOpacity="0.6" />
-                  <stop offset="100%" stopColor={country.color} stopOpacity="0.35" />
+                  <stop offset="0%" stopColor="#bbbbbb" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#999999" stopOpacity="0.4" />
                 </linearGradient>
               ))}
             </defs>
@@ -157,9 +157,9 @@ const Home: React.FC = () => {
                   y1={wuhanCenter.position.y}
                   x2={country.position.x}
                   y2={country.position.y}
-                  stroke={country.color}
-                  strokeWidth="0.12"
-                  strokeOpacity="0.12"
+                  stroke="#aaaaaa"
+                  strokeWidth="0.15"
+                  strokeOpacity="0.15"
                   className={styles.radiationLineGlow}
                   style={{ animationDelay: `${index * 0.8}s` }}
                 />
@@ -170,41 +170,25 @@ const Home: React.FC = () => {
                   x2={country.position.x}
                   y2={country.position.y}
                   stroke={`url(#lineGrad-${index})`}
-                  strokeWidth="0.06"
+                  strokeWidth="0.08"
                   strokeDasharray="0.8 0.6"
                   className={styles.radiationLine}
                   style={{ animationDelay: `${index * 0.8}s` }}
                 />
-                {/* 流光粒子效果 */}
-                <circle r="0.18" fill={wuhanCenter.color} opacity="0.6">
+                {/* 流光粒子效果 - 浅灰低调粒子 */}
+                <circle r="0.15" fill="#cccccc" opacity="0.5">
                   <animateMotion
-                    dur={`${6 + index * 0.8}s`}
+                    dur={`${8 + index * 1}s`}
                     repeatCount="indefinite"
-                    begin={`${index * 1.2}s`}
+                    begin={`${index * 1.5}s`}
                     path={`M${wuhanCenter.position.x},${wuhanCenter.position.y} L${country.position.x},${country.position.y}`}
                   />
                   <animate
                     attributeName="opacity"
-                    values="0;0.5;0.5;0"
-                    dur={`${6 + index * 0.8}s`}
+                    values="0;0.45;0.45;0"
+                    dur={`${8 + index * 1}s`}
                     repeatCount="indefinite"
-                    begin={`${index * 1.2}s`}
-                  />
-                </circle>
-                {/* 第二个流光粒子，错开时间 */}
-                <circle r="0.12" fill={country.color} opacity="0.45">
-                  <animateMotion
-                    dur={`${8 + index * 0.5}s`}
-                    repeatCount="indefinite"
-                    begin={`${index * 1.2 + 3}s`}
-                    path={`M${wuhanCenter.position.x},${wuhanCenter.position.y} L${country.position.x},${country.position.y}`}
-                  />
-                  <animate
-                    attributeName="opacity"
-                    values="0;0.4;0.4;0"
-                    dur={`${8 + index * 0.5}s`}
-                    repeatCount="indefinite"
-                    begin={`${index * 1.2 + 3}s`}
+                    begin={`${index * 1.5}s`}
                   />
                 </circle>
               </g>
