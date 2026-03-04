@@ -16,7 +16,7 @@
   background: linear-gradient(145deg, #0a1628 0%, #0d2137 50%, #0a1628 100%);
   border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 100, 200, 0.08);
-  width: 620px;
+  width: 820px;
   max-width: 95vw;
   overflow: hidden;
   animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -131,12 +131,92 @@
   transform: scale(1.1);
 }
 
+/* ========== 筛选栏 ========== */
+.filterBar {
+  display: flex;
+  justify-content: center;
+  padding: 14px 24px 12px;
+}
+
+.filterToggle {
+  position: relative;
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.filterButton {
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 22px;
+  cursor: pointer;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  min-width: 60px;
+  text-align: center;
+}
+
+.filterButton:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.filterButtonActive {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 0 10px rgba(100, 180, 255, 0.4);
+}
+
+.filterSlider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc((100% - 6px) / 3);
+  height: calc(100% - 6px);
+  background: linear-gradient(135deg, rgba(40, 120, 220, 0.35) 0%, rgba(30, 90, 180, 0.45) 100%);
+  border-radius: 17px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(40, 120, 220, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(100, 180, 255, 0.15);
+}
+
 /* ========== 卡片网格区域 ========== */
 .cardGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
   padding: 24px;
+  height: 280px;
+  overflow-y: auto;
+  align-content: start;
+}
+
+/* 自定义滚动条 */
+.cardGrid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cardGrid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.cardGrid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.cardGrid::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ========== 项目卡片 ========== */
@@ -301,6 +381,16 @@
     grid-template-columns: 1fr;
     gap: 12px;
     padding: 16px;
+  }
+
+  .filterToggle {
+    margin: 0 8px;
+  }
+
+  .filterButton {
+    padding: 4px 10px;
+    font-size: 11px;
+    min-width: 40px;
   }
 
   .projectCard {

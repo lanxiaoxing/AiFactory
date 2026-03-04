@@ -6,36 +6,48 @@ interface ProjectsTablePopupProps {
   onClose: () => void;
 }
 
+type Phase = 'pre' | 'post';
+type FilterType = 'all' | 'pre' | 'post';
+
 const projectData = [
   {
     project: 'URUS25',
     color: '#4ECDC4',
     glow: 'rgba(78, 205, 196, 0.2)',
     status: 'green',
+    phase: 'pre' as Phase,
   },
   {
     project: 'AVENGER26',
     color: '#FF6B6B',
     glow: 'rgba(255, 107, 107, 0.2)',
     status: 'yellow',
+    phase: 'post' as Phase,
   },
   {
     project: 'DALLAS26',
     color: '#A78BFA',
     glow: 'rgba(167, 139, 250, 0.2)',
     status: 'green',
+    phase: 'post' as Phase,
   },
   {
     project: 'EQUATOR25',
     color: '#F59E0B',
     glow: 'rgba(245, 158, 11, 0.2)',
     status: 'green',
+    phase: 'pre' as Phase,
   },
 ];
 
 const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
   const [selectedProject, setSelectedProject] = useState('');
   const [showProjectDetails, setShowProjectDetails] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+
+  const filteredProjects = activeFilter === 'all'
+    ? projectData
+    : projectData.filter(p => p.phase === activeFilter);
 
   const handleProjectClick = (projectName: string) => {
     setSelectedProject(projectName);
@@ -49,7 +61,7 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
         <div className={styles.popupHeader}>
           <h2 className={styles.popupTitle}>
             <strong>Ongoing Projects</strong>
-            <span className={styles.projectCount}>{projectData.length}</span>
+            <span className={styles.projectCount}>{filteredProjects.length}</span>
           </h2>
           <div className={styles.ecgContainer}>
             <svg className={styles.ecgLine} viewBox="0 0 200 40" preserveAspectRatio="none">
@@ -66,9 +78,30 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
           </button>
         </div>
 
-        {/* 2×2 Card Grid */}
+        {/* Filter Toggle Bar */}
+        <div className={styles.filterBar}>
+          <div className={styles.filterToggle}>
+            {(['all', 'pre', 'post'] as FilterType[]).map((filter) => (
+              <button
+                key={filter}
+                className={`${styles.filterButton} ${activeFilter === filter ? styles.filterButtonActive : ''}`}
+                onClick={() => setActiveFilter(filter)}
+              >
+                {filter.charAt(0).toUpperCase() + filter.slice(1)}
+              </button>
+            ))}
+            <div
+              className={styles.filterSlider}
+              style={{
+                transform: `translateX(${activeFilter === 'all' ? 0 : activeFilter === 'pre' ? 100 : 200}%)`,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Card Grid */}
         <div className={styles.cardGrid}>
-          {projectData.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.project}
               className={styles.projectCard}
