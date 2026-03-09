@@ -44,8 +44,8 @@ interface ProjectData {
 
 // Project specific data map
 const projectsData: { [key: string]: ProjectData } = {
-  'URUS25': {
-    image: '/URUS25.png',
+  'SYDNEY26': {
+    image: '/SYDNEY26.png',
     productConfig: [
       { label: 'Development', value: 'Shanghai' },
       { label: 'Platform', value: 'SM8845' },
@@ -145,8 +145,8 @@ const projectsData: { [key: string]: ProjectData } = {
       { sites: 'AR', volume: '/', kd: '/', fg: '/', smtLine: '/', beLine: '/', cfcLine: '/' },
     ]
   },
-  'EQUATOR25': {
-    image: '/EQUATOR25.png',
+  'TERRAIN26': {
+    image: '/TERRAIN26.png',
     productConfig: [
       { label: 'Development', value: 'Xiamen' },
       { label: 'Platform', value: 'QC7750' },
