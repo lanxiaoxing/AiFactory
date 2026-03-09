@@ -9,7 +9,18 @@ interface ProjectsTablePopupProps {
 type Phase = 'pre' | 'post';
 type FilterType = 'all' | 'pre' | 'post';
 
-const projectData = [
+interface ProjectItem {
+  project: string;
+  color: string;
+  glow: string;
+  status: string;
+  phase: Phase;
+  typeTag: string;
+  phaseTag: string;
+  noClick?: boolean;
+}
+
+const projectData: ProjectItem[] = [
   {
     project: 'SYDNEY26',
     color: '#4ECDC4',
@@ -45,6 +56,16 @@ const projectData = [
     phase: 'pre' as Phase,
     typeTag: 'In house',
     phaseTag: 'PVT',
+  },
+  {
+    project: 'HORIZION26',
+    color: '#F44336',
+    glow: 'rgba(244, 67, 54, 0.2)',
+    status: 'red',
+    phase: 'post' as Phase,
+    typeTag: 'In house',
+    phaseTag: 'OK2P',
+    noClick: true,
   },
 ];
 
@@ -112,16 +133,17 @@ const ProjectsTablePopup: React.FC<ProjectsTablePopupProps> = ({ onClose }) => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.project}
-              className={styles.projectCard}
+              className={`${styles.projectCard} ${project.noClick ? styles.noClickCard : ''}`}
               style={{
                 '--card-color': project.color,
                 '--card-glow': project.glow,
                 animationDelay: `${index * 0.1}s`,
+                cursor: project.noClick ? 'default' : 'pointer',
               } as React.CSSProperties}
-              onClick={() => handleProjectClick(project.project)}
+              onClick={project.noClick ? undefined : () => handleProjectClick(project.project)}
             >
               <div className={styles.cardHeader}>
-                <div className={`${styles.statusLight} ${project.status === 'yellow' ? styles.yellowLight : ''}`}></div>
+                <div className={`${styles.statusLight} ${project.status === 'yellow' ? styles.yellowLight : project.status === 'red' ? styles.redLight : ''}`}></div>
                 <span className={styles.cardProjectName}>{project.project}</span>
               </div>
               <div className={styles.cardTags}>

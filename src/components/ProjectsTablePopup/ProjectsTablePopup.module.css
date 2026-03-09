@@ -272,6 +272,25 @@
   transform: translateY(-2px);
 }
 
+.noClickCard:hover {
+  transform: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.noClickCard:hover::before {
+  opacity: 0.5 !important;
+}
+
+.noClickCard:hover .cardArrow {
+  opacity: 0 !important;
+  transform: none !important;
+}
+
+.noClickCard:active {
+  transform: none !important;
+}
+
 @keyframes cardEntrance {
   0% {
     opacity: 0;
@@ -334,6 +353,26 @@
   50% {
     opacity: 0.7;
     box-shadow: 0 0 14px rgba(255, 193, 7, 0.9);
+  }
+}
+
+.redLight {
+  background-color: #F44336 !important;
+  box-shadow: 0 0 8px rgba(244, 67, 54, 0.7);
+  animation: breatheRed 2.5s ease-in-out infinite;
+}
+
+@keyframes breatheRed {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.7);
+  }
+
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 14px rgba(244, 67, 54, 0.9);
   }
 }
 
