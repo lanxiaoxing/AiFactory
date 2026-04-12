@@ -102,10 +102,11 @@ const ProcessManager: React.FC<ProcessManagerProps> = ({ countryName, onClose })
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
                 <svg className={styles.treeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  {expanded ? (
+                    <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"></path>
+                  ) : (
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                  )}
                 </svg>
                 <span className={styles.treeLabel}>MFG Process</span>
               </div>
@@ -116,7 +117,11 @@ const ProcessManager: React.FC<ProcessManagerProps> = ({ countryName, onClose })
                     onClick={() => setActiveNode('SMT')}
                   >
                     <svg className={styles.treeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                      {activeNode === 'SMT' ? (
+                        <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"></path>
+                      ) : (
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                      )}
                     </svg>
                     <span className={styles.treeLabel}>SMT</span>
                   </div>
@@ -125,13 +130,11 @@ const ProcessManager: React.FC<ProcessManagerProps> = ({ countryName, onClose })
                     onClick={() => setActiveNode('LDA')}
                   >
                     <svg className={styles.treeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
-                      <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
-                      <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
-                      <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
-                      <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
-                      <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                      {activeNode === 'LDA' ? (
+                        <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"></path>
+                      ) : (
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                      )}
                     </svg>
                     <span className={styles.treeLabel}>LDA</span>
                   </div>
