@@ -66,7 +66,7 @@ img {
 
 .watermark-logo {
   position: fixed;
-  bottom: 12px; /* Decreased from 24px */
+  bottom: 0px; /* Decreased from 12px */
   right: 20px;
   z-index: 1000;
   width: 160px; /* Increased from 80px */
@@ -87,7 +87,7 @@ img {
   }
   
   .watermark-logo {
-    bottom: 8px; /* Decreased from 16px */
+    bottom: 0px; /* Decreased from 8px */
     right: 12px;
     width: 100px; /* Increased from 60px */
   }
