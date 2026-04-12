@@ -18,6 +18,8 @@ interface ProcessManagerProps {
 const ProcessManager: React.FC<ProcessManagerProps> = ({ countryName, onClose }) => {
   const [selectedFile, setSelectedFile] = useState<FileItem | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [expanded, setExpanded] = useState(true);
+  const [activeNode, setActiveNode] = useState('SMT');
 
   const processFiles: FileItem[] = [
     {
@@ -90,6 +92,54 @@ const ProcessManager: React.FC<ProcessManagerProps> = ({ countryName, onClose })
         </div>
 
         <div className={styles.fileManagerContent}>
+          <div className={styles.treeSidebar}>
+            <div className={styles.treeNode}>
+              <div 
+                className={styles.treeNodeHeader} 
+                onClick={() => setExpanded(!expanded)}
+              >
+                <svg className={`${styles.chevron} ${expanded ? styles.expanded : ''}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <svg className={styles.treeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+                <span className={styles.treeLabel}>MFG Process</span>
+              </div>
+              {expanded && (
+                <div className={styles.treeChildren}>
+                  <div 
+                    className={`${styles.treeChild} ${activeNode === 'SMT' ? styles.active : ''}`}
+                    onClick={() => setActiveNode('SMT')}
+                  >
+                    <svg className={styles.treeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <span className={styles.treeLabel}>SMT</span>
+                  </div>
+                  <div 
+                    className={`${styles.treeChild} ${activeNode === 'LDA' ? styles.active : ''}`}
+                    onClick={() => setActiveNode('LDA')}
+                  >
+                    <svg className={styles.treeIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                      <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                      <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                      <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                      <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                      <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                    </svg>
+                    <span className={styles.treeLabel}>LDA</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
           <div className={styles.fileList}>
             {filteredFiles.map((file) => (
               <div
