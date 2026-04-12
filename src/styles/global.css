@@ -66,20 +66,19 @@ img {
 
 .watermark-logo {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 12px; /* Decreased from 24px */
+  right: 20px;
   z-index: 1000;
-  width: 100px;
-  height: 40px;
+  width: 160px; /* Increased from 80px */
   opacity: 0.4;
   pointer-events: none;
-  color: #e0e0e0; /* light grayish white */
 }
 
-.watermark-logo svg {
+.watermark-logo img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {
@@ -88,8 +87,8 @@ img {
   }
   
   .watermark-logo {
-    bottom: 16px;
-    right: 16px;
-    width: 60px;
+    bottom: 8px; /* Decreased from 16px */
+    right: 12px;
+    width: 100px; /* Increased from 60px */
   }
 }
